@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Hallazo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @detections.each do |d| %>
+        <tr>
+            <td><%= d.user.name %></td>
+             <td><%= d.detail%></td>            
+        </tr>
+        <% end %>
+    </tbody>
+</table>

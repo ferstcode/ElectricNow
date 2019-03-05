@@ -1,0 +1,22 @@
+<%= form_with(model: [qualification, detection]) do |f| %>
+  <div class="form-group">
+    <%= f.label :detail, "Comentario" %>
+    <%= f.text_field :detail, class:'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :amount, "Monto a cobrar" %>
+    <%= f.number_field :monto, class:'form-control'%>
+  </div>
+  <div class="field">
+        <%= f.label :day, "Día a asistir" %>
+        <%= f.date_field :day, class:'form-control'%>
+  </div>
+  <div class="field">
+        <%= f.label :hour, "Hora a asistir" %>
+        <%= f.date_field :hour, class:'form-control'%>
+  </div>
+
+
+  
+  <%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>
+<% end %>

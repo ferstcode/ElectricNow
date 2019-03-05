@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  detection: one
+  detail: MyText
+  amount: 1
+  date: 2019-03-04
+  hour: 2019-03-04 20:14:56
+  state_mode: 1
+
+two:
+  user: two
+  detection: two
+  detail: MyText
+  amount: 1
+  date: 2019-03-04
+  hour: 2019-03-04 20:14:56
+  state_mode: 1

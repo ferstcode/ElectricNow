@@ -1,0 +1,2 @@
+class QuatationsController < ApplicationController
+end
