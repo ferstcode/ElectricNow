@@ -6,6 +6,8 @@ class DetectionsController < ApplicationController
     end 
 
     def show
+        @hora = @detection.hour.strftime('%H:%M')
+        @dia = @detection.date.strftime('%d-%m-%Y')
       
     end
     
@@ -23,8 +25,8 @@ class DetectionsController < ApplicationController
             hour: params[detection][:hour],
             state_mode: 1
             )
-            @detection.save
-            respond_to :js
+            @detection.save            
+            
     end
 
     private 

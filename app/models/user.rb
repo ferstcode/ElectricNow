@@ -3,10 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         has_many :messages
-         has_many :detections
-         has_many :quatations
-         has_many :califications
+  has_many :messages
+  has_many :detections
+  has_many :quatations
+  has_many :califications
 
-         enum role: %i[client electric]
+  enum role: %i[client electric]
 end

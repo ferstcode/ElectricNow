@@ -9,7 +9,8 @@
         <% @detections.each do |d| %>
         <tr>
             <td><%= d.user.name %></td>
-             <td><%= d.detail%></td>            
+            <td><%= d.detail%></td> 
+            <td><%= link_to 'Detalle', detection_path(d.id), class:"btn btn-primary"%></td>           
         </tr>
         <% end %>
     </tbody>

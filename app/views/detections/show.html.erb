@@ -1,15 +1,15 @@
 <div class="card text-center">
         <div class="card-header">
-            <%= @detection.user.email %>            
+            <p>Cliente: <%= @detection.user.name %></p>         
         </div>
         <div class="card-body">
-          <img src="<%=@detection.image%>" class="card-img-top" alt="...">
-          <p class="card-text"><%=@detection.detail %></p>
-          <p class="card-text"><%=@detection.address %></p>
-          <p class="card-text">Disponible a las <%=@detection.hour%> el día <%=@detection.date %></p> 
+          <img src="<%=@detection.image%>" height='200' alt="Imagen del hallazgo">          
+          <p class="card-text">Detalle del hallazgo: <%=@detection.detail %></p>
+          <p class="card-text">Dirección: <%=@detection.address %></p>
+          <p class="card-text">Disponibilidad para recibir visita del eléctrico: <%=@hora%> hrs. el día <%=@dia %></p> 
         </div>
         <div class="card-footer text-muted">  
-          <%=link_to 'Enviar cotización', new_detection_quatation_path(@detection.id), class:"btn btn-primary"%>       
+          <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), class:"btn btn-primary"%>       
         </div>
       </div>
 

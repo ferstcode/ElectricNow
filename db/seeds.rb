@@ -10,8 +10,8 @@
 Detection.destroy_all
 Detection.create(
     user_id: @user.id,
-    detail: "lllllllllllllllllllll",
-    image: "https://misanimales.com/wp-content/uploads/2014/12/gato-enfermo.jpg",
+    detail: "Salen chispas de esta cosa que esta en el patio!!",
+    image: "http://www.comuval.com/images/imagenes-blog/proteccion-instalacion-electrica.jpg",
     address: "fray camilo",
     commune: "Santiago",
     date: "20-02-2018",
