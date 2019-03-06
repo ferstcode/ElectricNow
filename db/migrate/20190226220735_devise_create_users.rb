@@ -37,7 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :commune
       t.string :image
-      t.integer :rol
+      t.integer :role, default: 0
       t.string :password
 
       t.timestamps null: false

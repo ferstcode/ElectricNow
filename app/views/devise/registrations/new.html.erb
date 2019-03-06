@@ -2,15 +2,15 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+  <div width= "50%">
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
-  <div class="field">
+  <div class="field" >
     <%= f.label :image %><br />
-    <%= f.text_field :image, autocomplete: "image" %>
+    <%= f.drag_and_drop_file_field :image %>
   </div>
 
   <div class="field">
@@ -32,6 +32,11 @@
     <%= f.label :commune %><br />
     <%= f.text_field :commune, autocomplete: "commune" %>
   </div>
+  
+    <div class="field">
+      <%= f.label :role %>
+        <%= f.select(:role,[['cliente', :client], ['electric', :electric]]) %>
+      </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -49,6 +54,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+</div>
 <% end %>
 
 <%= render "devise/shared/links" %>

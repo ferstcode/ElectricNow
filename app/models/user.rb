@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :detections
   has_many :quatations
   has_many :califications
-
-  enum role: %i[client electric]
+  has_one_attached :image
+  enum role: %i[client electric guest]
+  
 end
