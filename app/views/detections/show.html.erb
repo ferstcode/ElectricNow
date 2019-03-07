@@ -9,9 +9,14 @@
           <p class="card-text">Disponibilidad para recibir visita del eléctrico: <%=@hora%> hrs. el día <%=@dia %></p> 
         </div>
         <div class="card-footer text-muted">  
-          <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), class:"btn btn-primary"%>       
+          <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), remote: true%>
+          <%=link_to 'Volver', root_path, class:"btn btn-primary"%>       
         </div>
       </div>
+
+      <%= render 'shared/modal' %>
+
+
 
 
       

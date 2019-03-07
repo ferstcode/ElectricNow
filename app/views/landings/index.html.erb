@@ -1,3 +1,39 @@
 
 
 
+
+<% if can? :read, Detection %>
+<%= render 'detections/index' %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+<table class= 'table'>
+    <thead>
+        <tr>
+            <th>Eléctricos</th>
+            <th>Promedio de calificaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @electricos.each do |e| %>
+        <tr>
+            <td><%= e.name %></td>
+            <td></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+
+
+
+

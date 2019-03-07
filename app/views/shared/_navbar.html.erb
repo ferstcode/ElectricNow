@@ -8,6 +8,9 @@
         <li class="nav-item">
             <a class="nav-link" href="#">Hola <%= current_user.email %> </a>
         </li>
+        <li class= "nav-item">
+            <%= image_tag current_user.image, size: '50'%> 
+        </li>
         <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
         <% else %>
             <li><%= link_to 'Inicia sesión', new_user_session_path, class: 'nav-link' %></li>

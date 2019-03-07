@@ -4,11 +4,16 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-      user ||= User.new(2)
+      user ||= User.new(role: 2)
       if user.client?
-        can :manage, :all
-      else
-        can :create, Quatation
+        can :create, Detection 
+        can :read, Quatation, detection: {user_id: user.id}
+      elsif user.electric?
+        can :create, Quatation, quatation: {user_id: user.id}
+        can :read, Detection       
+      else 
+        can :read, :index
+        cannot :read, Detection
       end
     #
     # The first argument to `can` is the action you are giving the user
