@@ -6,9 +6,12 @@ class Ability
     #
       user ||= User.new(role: 2)
       if user.client?
+        
         can :create, Detection 
         can :read, Quatation, detection: {user_id: user.id}
+        can :read, role: :electric, class_name: :User, foreign_key: :user_id
       elsif user.electric?
+        cannot :read, role: :electric, class_name: :User, foreign_key: :user_id
         can :create, Quatation, quatation: {user_id: user.id}
         can :read, Detection       
       else 
