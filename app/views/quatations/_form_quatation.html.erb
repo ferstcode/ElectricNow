@@ -1,6 +1,6 @@
-<%= form_with(model: [detection, quatation]) do |f| %>
+<%= form_with(model: detection) do |f| %>
   <div class="form-group">
-    <%= f.label :detail, "Comentario" %>
+    <%= f.label :detail, "Detalle del hallazgo" %>
     <%= f.text_field :detail, class:'form-control' %>
   </div>
   <div class="field">

@@ -1,0 +1,14 @@
+<%= form_with(model: [electric_id, qualification]) do |f| %>
+  <div class="form-group">
+    <%= f.label :detail, "Comentario" %>
+    <%= f.text_field :detail, class:'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :calification, "Nota" %>
+    <%= f.number_field :calification, class:'form-control'%>
+  </div>
+ 
+
+  
+  <%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>
+<% end %>

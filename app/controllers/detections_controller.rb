@@ -14,6 +14,7 @@ class DetectionsController < ApplicationController
     
     def new 
         @detection = Detection.new
+        respond_to :js
     end 
     
     def create
@@ -26,7 +27,8 @@ class DetectionsController < ApplicationController
             hour: params[:detection][:hour],
             state_mode: 1
             )
-            @detection.save            
+            @detection.save   
+            respond_to :js         
             
     end
 
@@ -36,7 +38,7 @@ class DetectionsController < ApplicationController
     end
       
     def detection_params
-        params.require(:detection).permit(:detail, :email, amount, :date, :image, :hour)
+        params.require(:detection).permit(:detail, :email, :amount, :date, :image, :hour)
     end
 
 end

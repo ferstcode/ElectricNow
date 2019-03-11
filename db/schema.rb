@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 2019_03_06_160750) do
   end
 
   create_table "qualifications", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "client_id"
+    t.integer "electric_id"
     t.text "detail"
     t.integer "calification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_qualifications_on_user_id"
   end
 
   create_table "quatations", force: :cascade do |t|
@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 2019_03_06_160750) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "detections", "users"
   add_foreign_key "messages", "users"
-  add_foreign_key "qualifications", "users"
   add_foreign_key "quatations", "detections"
   add_foreign_key "quatations", "users"
 end

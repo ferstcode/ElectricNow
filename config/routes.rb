@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users 
   
-  get "users/:id", action: :show, controller: :users, as: 'user_profile'
+  resources :users, only: :show, as: 'user_profile'
+
+  resources :electrics do 
+    resources :qualifications
+  end
+
 
   resources :detections do 
     resources :quatations

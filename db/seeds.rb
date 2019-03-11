@@ -8,7 +8,8 @@
 
 
 
-@user = User.first
+@user = User.last
+Qualification.destroy_all
 Detection.destroy_all
 Detection.create(
     user_id: @user.id,
@@ -27,3 +28,18 @@ Detection.create(
     date: "10-02-2018",
     hour: "16:00"  
 )
+Qualification.create(
+        detail:"paralelepido",
+        client_id: @user.id,
+        electric_id: User.first.id,
+        calification: 5
+       
+)
+
+
+
+
+
+
+  
+
