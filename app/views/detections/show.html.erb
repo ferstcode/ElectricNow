@@ -10,7 +10,7 @@
         </div>
         <div class="card-footer text-muted">  
           <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), remote: true%>
-          <%=link_to 'Volver', root_path, class:"btn btn-primary"%>       
+          <%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary"%>       
         </div>
       </div>
 

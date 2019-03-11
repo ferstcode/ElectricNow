@@ -1,0 +1,18 @@
+<table class="table">
+        <thead>
+            <tr>
+                <th>Detalle del levantamiento</th>
+                <th>Fecha de publicación</th>
+                <th>Cotizaciones recibidas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @detections_client.each do |d| %>
+            <tr>
+                <td><%= d.detail%></td>
+                <td><%= d.created_at %></td>                    
+                <td><%= link_to d.quatations.count %></td>                       
+            </tr>
+            <% end %>
+        </tbody>
+    </table>

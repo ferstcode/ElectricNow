@@ -2,7 +2,8 @@ class QualificationsController < ApplicationController
 
     def index 
         @electric = User.find(params[:electric_id])
-        @qualifications = @electric.electric_qualifications.all
+        @qualifications = @electric.electric_qualifications.all 
+        
     end 
 
     def new 
@@ -10,7 +11,7 @@ class QualificationsController < ApplicationController
         @qualification = Qualification.new
         respond_to :js
     end
-    
+
     def create 
         @qualification = Qualification.new(
             detail: params[:qualification][:detail],

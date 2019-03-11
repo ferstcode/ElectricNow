@@ -1,24 +1,28 @@
-<%= form_with(model: [detection, quatation]) do |f| %>
+<%= form_with(model: detection) do |f| %>
   <div class="form-group">
-    <%= f.label :detail, "Comentario" %>
+    <%= f.label :detail, "Detalle del hallazgo" %>
     <%= f.text_field :detail, class:'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :image %><br />
+    <%= f.label :image, "Agrega una imagen"%>
     <%= f.drag_and_drop_file_field :image %>
   </div>
   <div class="form-group">
-        <%= f.label :commune, "Comuna" %>
-        <%= f.text_field :commune, class:'form-control' %>
-      </div>
+    <%= f.label :address, "Dirección" %>
+    <%= f.text_field :address, class:'form-control' %>
+  </div>
   <div class="form-group">
-        <%= f.label :date, "Fecha disponible" %>
-        <%= f.date_field :date, class:'form-control' %>
-    </div>
-    <div class="form-group">
-        <%= f.label :date, "Hora disponible" %>
-        <%= f.date_field :date, class:'form-control' %>
-        </div>
+    <%= f.label :commune, "Comuna" %>
+    <%= f.text_field :commune, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date, "Fecha disponible" %>
+    <%= f.date_field :date, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hour, "Hora disponible" %>
+    <%= f.time_field :hour, class:'form-control' %>
+  </div>
 
   
   <%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>

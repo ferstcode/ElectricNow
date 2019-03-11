@@ -12,10 +12,15 @@
             <%= image_tag current_user.image, size: '50'%> 
         </li>
         <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+        <% if can? :create, Detection %>
+        <li><%=link_to 'Publicar hallazgo', new_detection_path, remote: true, class:'nav-link'%></li>
+        <li><%=link_to 'Mis hallazgos', detections_path, remote: true, class:'nav-link'%></li>
+        <% end %>
         <% else %>
             <li><%= link_to 'Inicia sesión', new_user_session_path, class: 'nav-link' %></li>
             <li><%= link_to 'Regístrate', new_user_registration_path, class: 'nav-link' %></li>
         <% end %>
+    
         </ul>
               
     </div>

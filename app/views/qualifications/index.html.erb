@@ -21,6 +21,8 @@
 </table>
 
 
-<%=  %>
 
-<%=link_to 'Enviar levantamiento', new_detection_path, remote: true%>
+
+<%=link_to 'Enviar levantamiento', new_detection_path, remote: true, class:'btn btn-primary btn-sm'%>
+<%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary btn-sm"%>  
+<%= render 'shared/modal' %>

@@ -3,16 +3,19 @@ class DetectionsController < ApplicationController
 
     def index
         @detections = Detection.all 
+        @detections_client = Detection.where(user_id: current_user.id)
+        
+        respond_to :js
     end 
 
     def show
         @hora = @detection.hour.strftime('%H:%M')
-        @dia = @detection.date.strftime('%d-%m-%Y')      
-
+        @dia = @detection.date.strftime('%d-%m-%Y')
       
     end
     
-    def new 
+    def new
+        
         @detection = Detection.new
         respond_to :js
     end 

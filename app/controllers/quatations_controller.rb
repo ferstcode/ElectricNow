@@ -8,6 +8,12 @@ class QuatationsController < ApplicationController
         @quatation = Quatation.new
         respond_to :js
     end
+    def show
+        @detection = Detection.find(params[:detection_id])
+        @quatations = @detection.quatations.all
+
+      
+    end
     
     def create       
         @quatation = Quatation.new(
