@@ -11,7 +11,7 @@
             <tr>
                 <td><%= d.detail%></td>
                 <td><%= d.created_at %></td>                    
-                <td><%= link_to d.quatations.count %></td>                       
+                <td><%= link_to d.quatations.count, detection_quatations_path(d.id)%></td>                       
             </tr>
             <% end %>
         </tbody>

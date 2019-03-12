@@ -4,19 +4,21 @@
         <p><%= image_tag current_user.image , size: '200'%></p>
         <p><%= current_user.name%></p>    
         
+        <% if current_user.electric?%>
         
         <table>
-            <thead>
-                <tr>
-                    <th>Calificaciones </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                </tr>
-            </tbody>
+                <thead>
+                    <tr>
+                        <th>Promedio de calificaciones </th>
+                    </tr>
+                </thead>
+                <tbody>               
+                    <tr>
+                        <td><%=link_to @prom, electric_qualification_path(@electric, @qualifications)%></td>
+                    </tr>         
+                </tbody>
         </table>
-        
+        <% end %>        
     </div>
 </div>
+        

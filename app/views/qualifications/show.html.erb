@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Calificación</th>
+            <th>Nombre del cliente que calificó</th>
+            <th>Detalle de la calificación</th>
+            <th>Fecha en la que calificó</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%  @qualifications.each do |q|%>
+        <tr>
+            <td> <%= q.calification %></td>
+            <td><%= q.client.name%></td>
+            <td><%= q.detail%></td>
+            <td><%= q.created_at.strftime('%d-%m-%Y') %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary btn-sm"%>

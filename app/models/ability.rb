@@ -13,9 +13,10 @@ class Ability
       elsif user.electric?
         can :create, Quatation, quatation: {user_id: user.id}
         can :read, Detection
+        
       else
         can :read, :index
-        cannot :read, Detection
+        
       end
     #
     # The first argument to `can` is the action you are giving the user

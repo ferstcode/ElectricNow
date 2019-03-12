@@ -5,6 +5,11 @@ class QualificationsController < ApplicationController
         @qualifications = @electric.electric_qualifications.all 
         
     end 
+    def show
+        @electric = User.find(params[:electric_id])
+        @qualifications = @electric.electric_qualifications
+      
+    end
 
     def new 
         @electric = User.find(params[:user_id])
