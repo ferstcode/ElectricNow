@@ -11,7 +11,7 @@
         <tr>
             <td><%=d.created_at.strftime('%d-%m-%Y') %></td>
             <td><%=d.client.name%></td> 
-            <td> <%= link_to 'Ver detalle', detection_path(d.id), class:"btn btn-primary" %></td>               
+            <td><%=link_to 'Ver detalle', detection_path(d.id), class:"btn btn-primary" %></td>               
         </tr>
         <% end %>
     </tbody>
