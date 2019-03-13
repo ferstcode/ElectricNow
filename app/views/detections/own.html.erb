@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha de recepción</th>
+            <th>Nombre del cliente</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <% @detections_electric.each do |d| %>
+        <tr>
+            <td><%=d.created_at.strftime('%d-%m-%Y') %></td>
+            <td><%=d.client.name%></td> 
+            <td> <%= link_to 'Ver detalle', detection_path(d.id), class:"btn btn-primary" %></td>               
+        </tr>
+        <% end %>
+    </tbody>
+</table>

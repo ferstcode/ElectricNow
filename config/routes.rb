@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :electrics do
     member do
       get 'new_detection', to: 'detections#new', as: 'nested_detection'
+      get 'detections', to: 'detections#own'
     end
     resources :qualifications
   end

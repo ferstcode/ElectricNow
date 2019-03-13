@@ -4,8 +4,12 @@ class DetectionsController < ApplicationController
     def index
         @detections = Detection.all 
         @detections_client = Detection.where(user_id: current_user.id)
+       
         
         respond_to :js
+    end 
+    def own 
+        @detections_electric = Detection.where(electric_id: current_user.id) 
     end 
 
     def show
