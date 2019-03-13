@@ -22,13 +22,14 @@ class UsersController < ApplicationController
         if current_user.electric?
         @electric =  current_user
         @qualifications = @electric.electric_qualifications
-        end   
+           
         @sum = 0
         @qualifications.each do |q|            
             @sum += q.calification
         end 
         count = @qualifications.count
         @prom = @sum/((count > 0) ? count : 1)
+        end
     end
     
 

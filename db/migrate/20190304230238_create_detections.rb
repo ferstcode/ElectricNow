@@ -8,7 +8,7 @@ class CreateDetections < ActiveRecord::Migration[5.2]
       t.string :commune
       t.date :date
       t.time :hour
-      t.integer :state_mode
+      t.integer :state_mode, default: 2
       t.float :latitude
       t.float :longitude
 

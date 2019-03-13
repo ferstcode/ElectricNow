@@ -9,8 +9,10 @@ class Ability
         can :create, Detection 
         can :read, Quatation, detection: {user_id: user.id}
         can :read, User
+        can :create, Qualification
        
       elsif user.electric?
+        can :read, Qualification, qualification: {electric_id: user.id}
         can :create, Quatation, quatation: {user_id: user.id}
         can :read, Detection
         

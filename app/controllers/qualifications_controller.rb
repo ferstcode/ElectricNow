@@ -6,8 +6,7 @@ class QualificationsController < ApplicationController
         
     end 
     def show
-        @electric = User.find(params[:electric_id])
-        @qualifications = @electric.electric_qualifications
+       
       
     end
 

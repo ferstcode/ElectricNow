@@ -1,0 +1,26 @@
+<table class= "table">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Fecha de envío de cotización</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+            <th>Detalle de cotización</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @quatations_electric.each do |e| %>
+        <tr>
+            <td> <%=e.detection.user.name %></td>
+            <td> <%=e.created_at.strftime('%d-%m-%Y') %> </td>
+            <td> <%=e.detection.address%> en la comuna <%= e.detection.commune %></td>
+            <td><%= e.state_mode %></td>
+            <td><%=link_to "Ver detalle", detection_quatation_path(e.detection.id, e.id), remote: true%>  </td>
+        </tr>
+        <% end %>
+    </tbody>
+
+</table>
+<%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary"%>
+
+<%= render 'shared/modal' %>

@@ -2,16 +2,19 @@
     <thead>
         <tr>
             <th>Cliente</th>
-            <th>Hallazo</th>
+            <th>Hallazgo</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody> 
+        
         <% @detections.each do |d| %>
+        <% if !d.electric_id.present? %>
         <tr>
             <td><%= d.user.name %></td>
             <td><%= d.detail%></td> 
             <td><%= link_to 'Detalle', detection_path(d.id), class:"btn btn-primary"%></td>           
         </tr>
+        <% end %>
         <% end %>
     </tbody>
 </table>

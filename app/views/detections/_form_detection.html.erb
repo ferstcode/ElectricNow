@@ -1,4 +1,7 @@
 <%= form_with(model: detection) do |f| %>
+  <% if electric_id.present? %>
+    <%= f.hidden_field :electric_id, value: electric_id  %>
+  <% end %>
   <div class="form-group">
     <%= f.label :detail, "Detalle del hallazgo" %>
     <%= f.text_field :detail, class:'form-control' %>
@@ -23,7 +26,5 @@
     <%= f.label :hour, "Hora disponible" %>
     <%= f.time_field :hour, class:'form-control' %>
   </div>
-
-  
   <%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>
 <% end %>

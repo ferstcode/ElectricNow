@@ -15,7 +15,7 @@ class DetectionsController < ApplicationController
     end
     
     def new
-        
+        @electric_id = params[:id]
         @detection = Detection.new
         respond_to :js
     end 
@@ -23,16 +23,17 @@ class DetectionsController < ApplicationController
     def create
         @detection = Detection.new(                      
             user: current_user,            
-            detail: params[:detection][:detail],
-            amount: params[:detection][:amount],            
+            detail: params[:detection][:detail],                            
             image: params[:detection][:image],
+            address: params[:detection][:address],
+            commune: params[:detection][:commune],
             date: params[:detection][:date],
             hour: params[:detection][:hour],
+            electric_id: params[:detection][:electric_id].present? ? params[:detection][:electric_id] : nil,
             state_mode: 1
             )
-            @detection.save   
-            respond_to :js         
-            
+        @detection.save
+        redirect_to user_profile_path(current_user)
     end
 
     private 
@@ -41,7 +42,7 @@ class DetectionsController < ApplicationController
     end
       
     def detection_params
-        params.require(:detection).permit(:detail, :email, :amount, :date, :image, :hour)
+        params.require(:detection).permit(:detail, :address, :comune, :date, :hour, :image)
     end
 
 end

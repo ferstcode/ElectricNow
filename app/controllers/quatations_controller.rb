@@ -11,8 +11,14 @@ class QuatationsController < ApplicationController
     def index
         @detection = Detection.find(params[:detection_id])
         @quatations = @detection.quatations.all
-
+                         
     end
+    def show 
+        @detection = Detection.find(params[:detection_id])       
+        @quatations = Quatation.find(params[:id])
+        respond_to :js
+    end 
+
     
     def create       
         @quatation = Quatation.new(
@@ -21,12 +27,29 @@ class QuatationsController < ApplicationController
             detail: params[:quatation][:detail],
             amount: params[:quatation][:amount],
             date: @detection.date,
-            hour: @detection.hour,
-            state_mode: 1
+            hour: @detection.hour            
         )
         @quatation.save 
         respond_to :js
     end
+    def electric_quatations
+        @quatations_electric = current_user.quatations.all
+    end
+
+    def accepted
+        @detection = Detection.find(params[:detection_id])
+        @quatation = Quatation.find(params[:id])
+        @quatation.update(state_mode: 0)
+        respond_to :js
+    end 
+
+    def rejected
+        @detection = Detection.find(params[:detection_id])
+        @quatation = Quatation.find(params[:id])
+        @quatation.update(state_mode: 1)
+        redirect_to detection_quatations_path(@detection)
+        respond_to :js
+    end 
       
 
     private 

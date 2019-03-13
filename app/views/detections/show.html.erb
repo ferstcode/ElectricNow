@@ -3,7 +3,7 @@
             <p>Cliente: <%= @detection.user.name %></p>         
         </div>
         <div class="card-body">
-          <img src="<%=@detection.image%>" height='200' alt="Imagen del hallazgo">          
+          <%= image_tag @detection.image, height: '200', alt:"Imagen del hallazgo"%>                  
           <p class="card-text">Detalle del hallazgo: <%=@detection.detail %></p>
           <p class="card-text">Dirección: <%=@detection.address %></p>
           <p class="card-text">Disponibilidad para recibir visita del eléctrico: <%=@hora%> hrs. el día <%=@dia %></p> 

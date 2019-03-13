@@ -1,0 +1,25 @@
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Detalle</th>
+            <th>Monto a cobrar</th>
+            <th>Fecha a asistir</th>
+            <th>Horario a asistir</th>
+        </tr>
+    </thead>
+    <tbody>           
+        <tr>
+            <td><%= quatation.detail %></td>
+            <td><%= quatation.amount %></td>
+            <td><%= quatation.date.strftime('%d-%m-%Y')%></td>
+            <td><%= quatation.hour.strftime('%H:%M') %></td>
+        </tr>      
+    </tbody>
+</table>
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@ class CreateQuatations < ActiveRecord::Migration[5.2]
       t.integer :amount
       t.date :date
       t.time :hour
-      t.integer :state_mode
+      t.integer :state_mode, default: 2
 
       t.timestamps
     end

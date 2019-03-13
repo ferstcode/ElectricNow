@@ -1,7 +1,7 @@
 <table class="table">
         <thead>
             <tr>
-                <th>Detalle del levantamiento</th>
+                <th>Detalle del hallazgo</th>
                 <th>Fecha de publicación</th>
                 <th>Cotizaciones recibidas</th>
             </tr>
@@ -10,9 +10,11 @@
             <% @detections_client.each do |d| %>
             <tr>
                 <td><%= d.detail%></td>
-                <td><%= d.created_at %></td>                    
+                <td><%= d.created_at.strftime('%d-%m-%Y') %></td>                    
                 <td><%= link_to d.quatations.count, detection_quatations_path(d.id)%></td>                       
             </tr>
             <% end %>
         </tbody>
     </table>
+
+    

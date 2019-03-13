@@ -1,3 +1,3 @@
-$('.modal-title').html("Crear un levantamiento")
-$('.modal-body').html("<%= j render 'form_detection', detection: @detection%>")
-$('.modal').modal('show')
+$('.modal-title').html("Crear un levantamiento");
+$('.modal-body').html("<%= j render 'form_detection', { detection: @detection, electric_id: @electric_id } %>");
+$('.modal').modal('show');
