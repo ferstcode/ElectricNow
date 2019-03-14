@@ -1,23 +1,22 @@
 <div class="card text-center">
-        <div class="card-header">
-            <p>Cliente: <%= @detection.user.name %></p>         
-        </div>
-        <div class="card-body">
-          <%= image_tag @detection.image, height: '200', alt:"Imagen del hallazgo"%>                  
-          <p class="card-text">Detalle del hallazgo: <%=@detection.detail %></p>
-          <p class="card-text">Dirección: <%=@detection.address %></p>
-          <p class="card-text">Disponibilidad para recibir visita del eléctrico: <%=@hora%> hrs. el día <%=@dia %></p> 
-        </div>
-        <div class="card-footer text-muted">  
-          <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), remote: true%>
-          <%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary"%>       
-        </div>
-      </div>
+  <div class="card-header">
+    <p>Cliente: <%= @detection.user.name %></p>         
+  </div>
+  <div class="card-body">
+    <%= image_tag @detection.image, height: '200', alt:"Imagen del hallazgo"%>                  
+    <p class="card-text">Detalle del hallazgo: <%=@detection.detail %></p>
+    <p class="card-text">Dirección: <%=@detection.address %></p>
+    <p class="card-text">Disponibilidad para recibir visita del eléctrico: <%=@hora%> hrs. el día <%=@dia %></p> 
+  </div>
+  <div class="card-footer text-muted">  
+    <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), remote: true%>
+    <%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary"%>       
+  </div>
+</div>
 
-      <%= render 'shared/modal' %>
-      
-
+<%= render 'shared/modal' %>
 
 
 
-      
+
+

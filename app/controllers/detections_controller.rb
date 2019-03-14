@@ -8,7 +8,19 @@ class DetectionsController < ApplicationController
     end 
     def own 
         @detections_electric = Detection.where(electric_id: current_user.id) 
-    end 
+    end
+    
+    def accepted
+        @detection = Detection.find(params[:id])        
+        @detection.update(state_mode: 0)
+        respond_to :js
+    end
+    
+    def rejected
+        @detection = Detection.find(params[:id])        
+        @detection.update(state_mode: 1)        
+        respond_to :js
+    end
 
     def show
         @hora = @detection.hour.strftime('%H:%M')
@@ -31,8 +43,7 @@ class DetectionsController < ApplicationController
             commune: params[:detection][:commune],
             date: params[:detection][:date],
             hour: params[:detection][:hour],
-            electric_id: params[:detection][:electric_id].present? ? params[:detection][:electric_id] : nil,
-            state_mode: 1
+            electric_id: params[:detection][:electric_id].present? ? params[:detection][:electric_id] : nil,            
             )
         @detection.save
         redirect_to user_profile_path(current_user)

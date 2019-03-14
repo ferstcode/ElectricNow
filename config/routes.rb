@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   
   resources :users, only: :show, as: 'user_profile' 
   get :quatations, to: 'quatations#electric_quatations', as: 'user_quatations'
@@ -12,9 +15,19 @@ Rails.application.routes.draw do
     end
     resources :qualifications
   end
+  resources :quatations, only: [] do
+    # member do
+    resources :messages
+    # end 
+  end
   
   resources :detections do 
-    resources :quatations do 
+    member do
+      patch 'accepted_detection', to: 'detections#accepted'
+      patch 'rejected_detection', to: 'detections#rejected'
+    end
+    resources :quatations do
+      
       member do
         patch 'accepted_quatation', to: 'quatations#accepted'
         patch 'rejected_quatation', to: 'quatations#rejected'

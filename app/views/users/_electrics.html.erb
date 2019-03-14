@@ -1,28 +1,27 @@
-
 <table class= 'table'>
-        <thead>
-            <tr>
-                <th>Eléctricos</th>
-                <th>Promedio de calificaciones</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @electrics.each do |e| %>
-            <tr>
-                <td><%= e.name %></td> 
-                <% if  @result[e.id] != 0%>               
-                <td> <%= @result[e.id] %> </td> 
-                
-                <% else %>
-                <td> Todavía no ha sido calificado </td>
-                <% end %> 
-                <td> <%= link_to 'Detalle', electric_qualifications_path(e.id) %> </td>
-                
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-    
+    <thead>
+        <tr>
+            <th>Eléctricos</th>
+            <th>Promedio de calificaciones</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @electrics.each do |e| %>
+        <tr>
+            <td><%= e.name %></td> 
+            <% if  @result[e.id] != 0%>               
+            <td> <%= @result[e.id] %> </td> 
+            
+            <% else %>
+            <td> Todavía no ha sido calificado </td>
+            <% end %> 
+            <td> <%= link_to 'Detalle', electric_qualifications_path(e.id) %> </td>
+            
+        </tr>
+        <% end %>
+    </tbody>
+</table>
 
-    <%= render 'shared/modal' %>
+
+<%= render 'shared/modal' %>

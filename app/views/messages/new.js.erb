@@ -1,0 +1,4 @@
+$('.modal-title').html("Mensaje");
+$('.modal-body').html("<%= j render 'form_message', { quatation: @quatation, message: @message }   %>");
+$('.modal-footer').html("<%= j render @messages %>")
+$('.modal').modal('show');

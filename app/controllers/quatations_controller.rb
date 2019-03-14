@@ -46,8 +46,7 @@ class QuatationsController < ApplicationController
     def rejected
         @detection = Detection.find(params[:detection_id])
         @quatation = Quatation.find(params[:id])
-        @quatation.update(state_mode: 1)
-        redirect_to detection_quatations_path(@detection)
+        @quatation.update(state_mode: 1)       
         respond_to :js
     end 
       

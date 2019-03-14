@@ -1,27 +1,26 @@
 <table class="table">
-        <thead>
-            <tr>
-                <th>Detalle del hallazgo</th>
-                <th>Fecha de publicación</th>
-                <th>Cotizaciones recibidas</th>
-                <th>Nombre del eléctrico</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @detections_client.each do |d| %>
-            <tr>
-                <td><%= d.detail%></td>
-                <td><%= d.created_at.strftime('%d-%m-%Y') %></td>
-                <td><%= link_to d.quatations.count, detection_quatations_path(d.id)%></td> 
-                <% if d.electric_id.present? %>
-                <td> <%=  User.find(d.electric_id).name %></td>
-                <% else %> 
-                <td> Hallazgo publicado de manera general</td>
-                <% end %>                  
-                                       
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-    
-    
+    <thead>
+        <tr>
+            <th>Detalle del hallazgo</th>
+            <th>Fecha de publicación</th>
+            <th>Cotizaciones recibidas</th>
+            <th>Nombre del eléctrico</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @detections_client.each do |d| %>
+        <tr>
+            <td><%= d.detail%></td>
+            <td><%= d.created_at.strftime('%d-%m-%Y') %></td>
+            <td><%= link_to d.quatations.count, detection_quatations_path(d.id)%></td> 
+            <% if d.electric_id.present? %>
+            <td> <%=  User.find(d.electric_id).name %></td>
+            <% else %> 
+            <td> Hallazgo publicado de manera general</td>
+            <% end %>                  
+            
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+

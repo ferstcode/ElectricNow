@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_212504) do
+ActiveRecord::Schema.define(version: 2019_03_14_152957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,11 +68,13 @@ ActiveRecord::Schema.define(version: 2019_03_12_212504) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "client_id"
+    t.integer "electric_id"
     t.string "content"
+    t.bigint "quatation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["quatation_id"], name: "index_messages_on_quatation_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -119,7 +121,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_212504) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "detections", "users"
-  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "quatations"
   add_foreign_key "quatations", "detections"
   add_foreign_key "quatations", "users"
 end

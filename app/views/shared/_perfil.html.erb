@@ -7,14 +7,14 @@
         <% if current_user.electric?%>
         
         <table class="table">
-                <thead>
-                    <tr>
-                        <th>Promedio de calificaciones </th>
-                        <th><%=link_to @prom, electric_qualifications_path(@electric)%></th>
-                    </tr>         
-                </thead>               
+            <thead>
+                <tr>
+                    <th>Promedio de calificaciones </th>
+                    <th><%=link_to @prom, electric_qualifications_path(@electric)%></th>
+                </tr>         
+            </thead>               
         </table>
         <% end %>        
     </div>
 </div>
-        
+

@@ -1,0 +1,8 @@
+<%= form_with(model: [quatation, message]) do |f| %>
+<div class="form-group">
+  <%= f.label :content, "Escribe tu mensaje" %>
+  <%= f.text_field :content, class:'form-control'%>
+</div>
+
+<%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>
+<% end %>

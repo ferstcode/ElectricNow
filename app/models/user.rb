@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :messages
   has_many :detections
   has_many :quatations
-
+  has_many :client_messages, class_name: :Message, foreign_key: :client_id
+  has_many :electric_messages, class_name: :Message, foreign_key: :electric_id
   has_many :client_qualifications, class_name: :Qualification, foreign_key: :client_id
   has_many :electric_qualifications, class_name: :Qualification, foreign_key: :electric_id
   has_one_attached :image
