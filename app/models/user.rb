@@ -12,5 +12,7 @@ class User < ApplicationRecord
   has_many :electric_qualifications, class_name: :Qualification, foreign_key: :electric_id
   has_one_attached :image
   enum role: %i[client electric guest]
+  scope :electrics, -> { where(role: :electric) }
+ 
   
 end

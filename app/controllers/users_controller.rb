@@ -1,9 +1,18 @@
 class UsersController < ApplicationController
+    
 
-    def electrics 
-        @electrics = User.where(role: :electric)
-        @electric = User.find(params[:user_id])
-        @qualification = Qualification.new
+    def index 
+        @electrics = User.electrics
+        @result={}
+        @electrics.each do |electric|
+            sum = 0
+            electric.electric_qualifications.each do |q|
+              sum += q.calification            
+            end
+            count = electric.electric_qualifications.count
+            prom = sum/((count > 0) ? count : 1)
+            @result[electric.id]=prom
+        end
     end
     
     def show

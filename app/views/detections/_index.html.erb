@@ -1,4 +1,4 @@
-<% if can? :read, Detection %>
+<% if can? :read, Detection %> <!-- electric-->
     <h2 class=" text-center">Hallazgos</h2>
     <table class="table">
         <thead>
@@ -20,7 +20,7 @@
         </tbody>
     </table>
 <% end %>
-<% if can? :create, Detection %>    
+<% if can? :create, Detection %>   <!-- client--> 
         <h2>Hallazgos enviados a un eléctrico</h2>
         <% if @detections_electric_id.present? %>
             <table class="table">

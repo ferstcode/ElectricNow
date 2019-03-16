@@ -13,19 +13,23 @@
             </li>
             <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
             <% if can? :create, Quatation %>
-            <li> <%= link_to 'Mis Cotizaciones', user_quatations_path, class: 'nav-link'%></li>
+                <li> <%= link_to 'Mis Cotizaciones', user_quatations_path, class: 'nav-link'%></li>
             <% end %>
             <% if can? :create, Detection %>
-            <li><%=link_to 'Publicar hallazgo', new_detection_path, remote: true, class:'nav-link'%></li>            
+                <li><%=link_to 'Publicar hallazgo', new_detection_path, remote: true, class:'nav-link'%></li>            
             <% end %>
+            <% if can? :read, User %>
+                <li><%=link_to 'Eléctricos', electrics_path, class:'nav-link'%></li>            
+            <% end %>
+
             <% if current_user.electric? %>
-            <% if can? :read, Detection%>
-            <li> <%= link_to 'Detecciones recibidas', detections_electric_path(current_user.id), class: 'nav-link' %> </li>            
-            <% end  %>
+                <% if can? :read, Detection%>
+                    <li> <%= link_to 'Detecciones recibidas', detections_electric_path(current_user.id), class: 'nav-link' %> </li>            
+                <% end  %>
             <% end %>
             <% else %>      
-            <li><%= link_to 'Inicia sesión', new_user_session_path, class: 'nav-link' %></li>
-            <li><%= link_to 'Regístrate', new_user_registration_path, class: 'nav-link' %></li>
+                <li><%= link_to 'Inicia sesión', new_user_session_path, class: 'nav-link' %></li>
+                <li><%= link_to 'Regístrate', new_user_registration_path, class: 'nav-link' %></li>
             <% end %>
             
         </ul>

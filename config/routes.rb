@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   }
   
   resources :users, only: :show, as: 'user_profile' 
+  resources :users, only: :index, as: 'electrics' 
+
   get :quatations, to: 'quatations#electric_quatations', as: 'user_quatations'
   
   
