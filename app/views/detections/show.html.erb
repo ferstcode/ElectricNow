@@ -19,27 +19,13 @@
 
 <script>
       handler = Gmaps.build('Google');
-
-  $(document).ready(function(){
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers([
-        {
-          "lat": <%= @detection.latitude %>,
-          "lng": <%= @detection.longitude %>,
-          "picture": {
-          "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
-          "width":  32,
-          "height": 32
-        },
-        "infowindow": "hello!"
-        }
-      ]);      
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      center.setMap(map);
-    });
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  });
+      $(document).ready(function(){
+        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers(<%=raw @hash.to_json %>);  
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();      
+       });    
+      });
 </script>
 
 
