@@ -6,6 +6,7 @@
             <th>Cobro</th>
             <th>Aceptar/Rechazar</th>
             <th>Podrás enviar/leer mensajes si aceptas la cotización</th>
+            <th>Mensajes pendientes</th>
         </tr>
     </thead>
     <tbody>
@@ -16,16 +17,17 @@
             <td> <%= q.amount %> </td>
             
             <% if current_user.client? %>
-            <% if q.accepted?%>
-            <td><button type='button' class='btn btn-info'> Haz aceptado la cotización </button></td>
-            <td><%= link_to 'Enviar mensaje/Leer mensaje', new_quatation_message_path(q.id), remote: true, class:"btn btn-success"%></td>
-            <% elsif q.rejected?%> 
-            <td><button type='button' class='btn btn-danger'> Haz rechazado la cotización </button></td>
-            <% else %>
-            <td id= "estado"><%= link_to "Aceptar", accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-success btn-sm" %>
-                <%= link_to "Rechazar", rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-danger btn-sm" %></td>
+                <% if q.accepted?%>
+                    <td><button type='button' class='btn btn-info'> Haz aceptado la cotización </button></td>
+                    <td><%= link_to 'Enviar mensaje/Leer mensaje', new_quatation_message_path(q.id), remote: true, class:"btn btn-success"%></td>
+                    <td id="unread_messages"><%= q.unread_messages_for(current_user) %></td>
+                <% elsif q.rejected?%> 
+                    <td><button type='button' class='btn btn-danger'> Haz rechazado la cotización </button></td>
+                <% else %>
+                    <td id= "estado"><%= link_to "Aceptar", accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-success btn-sm" %>
+                    <%= link_to "Rechazar", rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-danger btn-sm" %></td>
                 <% end %>
-                <% end %>            
+            <% end %>            
             </tr>
             <% end %>
         </tbody>

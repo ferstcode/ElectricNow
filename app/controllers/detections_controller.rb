@@ -25,7 +25,10 @@ class DetectionsController < ApplicationController
     def show
         @hora = @detection.hour.strftime('%H:%M')
         @dia = @detection.date.strftime('%d-%m-%Y')
-      
+        @hash = Gmaps4rails.build_markers(@detection) do |detection, marker|
+            marker.lat detection.latitude
+            marker.lng detection.longitude
+        end
     end
     
     def new
@@ -45,6 +48,10 @@ class DetectionsController < ApplicationController
             hour: params[:detection][:hour],
             electric_id: params[:detection][:electric_id].present? ? params[:detection][:electric_id] : nil,            
             )
+        coordinates = Geocoder.coordinates("#{@detection.address}, #{@detection.commune}")
+        @detection.latitude = coordinates.first
+        @detection.longitude = coordinates.last
+
         @detection.save
         redirect_to user_profile_path(current_user)
     end

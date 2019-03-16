@@ -18,7 +18,7 @@
 </table>
 <%=link_to 'Enviar levantamiento', nested_detection_electric_path(@electric), remote: true, class:'btn btn-primary btn-sm'%>
 <%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary btn-sm"%>  
-<%= render 'shared/modal' %>
+
 <% end %>
 
 <% if current_user.electric? %>

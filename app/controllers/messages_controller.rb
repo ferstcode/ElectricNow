@@ -2,7 +2,13 @@ class MessagesController < ApplicationController
 
     def new 
         @quatation = Quatation.find(params[:quatation_id])
-        @messages= @quatation.messages.order(id: :desc)
+        @messages = @quatation.messages.order(id: :desc)
+        if current_user.client?
+            @unread_messages = @messages.where(read: false, client_id: nil)
+        elsif current_user.electric?
+            @unread_messages = @messages.where(read: false, electric_id: nil)            
+        end
+        @unread_messages.update_all(read: true) if @unread_messages.present?
         @message = Message.new 
         
         respond_to :js
@@ -25,14 +31,7 @@ class MessagesController < ApplicationController
         @message.save
         respond_to :js      
     end 
-    def index
-      
-
-    end 
-    def show 
-        
-    end 
-
+    
 
 
 

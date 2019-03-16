@@ -1,3 +1,4 @@
+$('#unread_messages').html(" <%= @quatation.unread_messages_for(current_user)%>")
 $('.modal-title').html("Mensaje");
 $('.modal-body').html("<%= j render 'form_message', { quatation: @quatation, message: @message }   %>");
 $('.modal-footer').html("<%= j render @messages %>")

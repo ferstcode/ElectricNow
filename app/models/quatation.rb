@@ -5,4 +5,12 @@ class Quatation < ApplicationRecord
   has_many :messages
 
   enum state_mode: %i[accepted rejected waiting]
+
+  def unread_messages_for(user)
+    if user.client?
+      messages.where(read: false, client_id: nil).count
+    elsif user.electric?
+      messages.where(read: false, electric_id: nil).count
+    end
+  end
 end

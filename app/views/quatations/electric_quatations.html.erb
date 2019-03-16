@@ -5,6 +5,7 @@
             <th>Cliente</th>                        
             <th>Estado</th>
             <th>Si aceptan la cotización podrás enviar/leer un mensaje</th>
+            <th>Mensajes pendientes</th>
             <th>Detalle de cotización</th>
         </tr>
     </thead>
@@ -16,6 +17,7 @@
             <% if e.accepted? %>
             <td><button type='button' class='btn btn-info'> Han aceptado la cotización </button></td>
             <td><%= link_to 'Enviar mensaje/Leer mensaje', new_quatation_message_path(e.id), remote: true, class:"btn btn-success"%></td>                     
+            <td id="unread_messages"><%= e.unread_messages_for(current_user) %></td>
             <% elsif e.rejected?%> 
             <td><button type='button' class='btn btn-danger'> Han rechazado la cotización </button></td>
             <td></td>
@@ -32,5 +34,4 @@
 </table>
 <%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary"%>
 
-<%= render 'shared/modal' %>
 

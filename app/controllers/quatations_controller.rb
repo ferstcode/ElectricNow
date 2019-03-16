@@ -10,8 +10,7 @@ class QuatationsController < ApplicationController
     end
     def index
         @detection = Detection.find(params[:detection_id])
-        @quatations = @detection.quatations.all
-                         
+        @quatations = @detection.quatations.all                     
     end
     def show 
         @detection = Detection.find(params[:detection_id])       
