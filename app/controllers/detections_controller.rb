@@ -2,9 +2,8 @@ class DetectionsController < ApplicationController
     before_action :set_detection, only: [:show]
 
     def index
-        @detections = Detection.all 
-        @detections_client = Detection.where(user_id: current_user.id)
-        respond_to :js
+        @detections = Detection.all
+       
     end 
     def own 
         @detections_electric = Detection.where(electric_id: current_user.id) 
@@ -25,10 +24,11 @@ class DetectionsController < ApplicationController
     def show
         @hora = @detection.hour.strftime('%H:%M')
         @dia = @detection.date.strftime('%d-%m-%Y')
+        
         @hash = Gmaps4rails.build_markers(@detection) do |detection, marker|
             marker.lat detection.latitude
             marker.lng detection.longitude
-        end
+          end
     end
     
     def new

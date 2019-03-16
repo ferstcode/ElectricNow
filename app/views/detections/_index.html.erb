@@ -1,21 +1,83 @@
-<h2 class=" text-center">Hallazgos</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Cliente</th>
-            <th>Hallazgo</th>
-        </tr>
-    </thead>
-    <tbody> 
+<% if can? :read, Detection %>
+    <h2 class=" text-center">Hallazgos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Hallazgo</th>
+            </tr>
+        </thead>
+        <tbody>            
+            <% @detections.each do |d| %>
+                <% if !d.electric_id.present? %>
+                <tr>
+                    <td><%= d.user.name %></td>
+                    <td><%= d.detail%></td> 
+                    <td><%= link_to 'Detalle', detection_path(d.id), class:"btn btn-primary"%></td>                            
+                </tr>
+                <% end %>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
+<% if can? :create, Detection %>    
+        <h2>Hallazgos enviados a un eléctrico</h2>
+        <% if @detections_electric_id.present? %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Fecha de envío</th>
+                        <th>Detalle</th>
+                        <th></th>
+                        <th>Cotizaciones recibidas</th>
+                    </tr>
+                </thead>
+                </tbody>
+                <% @detections_electric_id.each do |d|  %>
+                    <tr>
+                        <td> <%=  d.created_at.strftime('%d-%m-%Y')%></td>
+                        <td> <%=  d.detail%></td>
+                        <td> <%=link_to 'Ver mas', detection_path(d.id), class:"btn btn-primary"%> </td>
+                        <% if d.quatations.count == 0 %>
+                            <td> <button type="button" class="btn btn-danger">No haz recibido cotizaciones</button></td>                          
+                        <% elsif d.quatations.count > 0 %>
+                            <td><%= link_to d.quatations.count, detection_quatations_path(d.id), class: "btn btn-info"%></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+        <% else %>
+            <h5>No existen hallazgos relacionados a un eléctrico</h5>
+        <% end %>        
+        <h2>Hallazgos publicados</h2>
+        <% if @detections_all.present? %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Fecha de envío</th>
+                        <th>Detalle</th>
+                        <th></th>
+                        <th>Cotizaciones recibidas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @detections_all.each do |d| %>
+                    <tr>
+                        <td> <%=  d.created_at.strftime('%d-%m-%Y')%></td>
+                        <td> <%=  d.detail%></td>
+                        <td> <%=link_to 'Ver mas', detection_path(d.id), class:"btn btn-primary"%> </td>
+                        <% if d.quatations.count == 0 %>
+                            <td> <button type="button" class="btn btn-danger">No haz recibido cotizaciones</button></td>                          
+                        <% elsif d.quatations.count > 0 %>
+                            <td><%= link_to d.quatations.count, detection_quatations_path(d.id), class: "btn btn-info"%></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table> 
+        <% else %>
+            <h5>No haz publicado hallazgos</h5>
+        <% end %>        
+<% end %>
         
-        <% @detections.each do |d| %>
-        <% if !d.electric_id.present? %>
-        <tr>
-            <td><%= d.user.name %></td>
-            <td><%= d.detail%></td> 
-            <td><%= link_to 'Detalle', detection_path(d.id), class:"btn btn-primary"%></td>           
-        </tr>
-        <% end %>
-        <% end %>
-    </tbody>
-</table>
+          
+        

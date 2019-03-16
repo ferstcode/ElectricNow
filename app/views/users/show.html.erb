@@ -1,15 +1,5 @@
 <%= render 'shared/perfil' %>
-
-
-<% if can? :read, Detection %>
 <%= render 'detections/index' %>
-<% end %>
-
-<% if can? :read, User %>
-<%= render 'electrics' %>
-<% end %>
-
-
 
 
 

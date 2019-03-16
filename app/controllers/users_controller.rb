@@ -30,6 +30,11 @@ class UsersController < ApplicationController
         count = @qualifications.count
         @prom = @sum/((count > 0) ? count : 1)
         end
+        if current_user.client?
+            @detections_client = Detection.where(user_id: current_user.id)
+            @detections_electric_id = @detections_client.where('electric_id is not null')
+            @detections_all= @detections_client.where(electric_id: nil)        
+        end
     end
     
 
