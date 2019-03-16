@@ -5,15 +5,14 @@
             <th>Comentario</th>
             <th>Cobro</th>
             <th>Aceptar/Rechazar</th>
-            <th>Podrás enviar/leer mensajes si aceptas la cotización</th>
-            
+            <th>Podrás enviar/leer mensajes si aceptas la cotización</th>            
             <th>Mensajes pendientes</th>
             <th>Eliminar</th>
         </tr>
     </thead>
     <tbody>
         <% @quatations.each do |q| %>
-        <tr>
+        <tr id="<%=q.id%>">
             <td> <%=link_to q.electric.name, electric_qualifications_path(q.electric.id) %> </td>
             <td> <%= q.detail %> </td>
             <td> <%= q.amount %> </td>
@@ -23,8 +22,8 @@
                     <td><button type='button' class='btn btn-info'> Haz aceptado la cotización </button></td>
                     <td><%= link_to 'Enviar mensaje/Leer mensaje', new_quatation_message_path(q.id), remote: true, class:"btn btn-success"%></td>
                     <td id="unread_messages"><%= q.unread_messages_for(current_user) %></td>
-                    <% if q.date < Date.today %>
-            <td> <%= link_to "Eliminar", "#" %> </td> 
+                    <% if q.date < Time.zone.now %>
+            <td> <%= link_to "Eliminar", detection_quatation_path(q.detection, q), method: :delete, remote: true  %> </td> 
             <% else %>   
             <td><p>--</p></td>          
             <% end %>
@@ -32,14 +31,17 @@
                     <td><button type='button' class='btn btn-danger'> Haz rechazado la cotización </button></td>
                     <td></td>
                     <td></td>
-                    <td> <%= link_to "Eliminar", "#" %> </td>
+                    <td> <%= link_to "Eliminar", detection_quatation_path(q.detection, q), method: :delete, remote: true%> </td>
                     
                 <% else %>
-                    <td id= "estado"><%= link_to "Aceptar", accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-success btn-sm" %>
-                    <%= link_to "Rechazar", rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-danger btn-sm" %></td>
-                    <% if q.date < Date.today %>
-                    <td> <%= link_to "Eliminar", "#" %> </td> 
+                    <% if q.date < Time.zone.now %>
+                    <td>--</td>
+                    <td>--</td>
+                    <td></td>                         
+                    <td> <%= link_to "Eliminar", detection_quatation_path(q.detection, q), method: :delete, remote: true %> </td> 
                     <% else %>
+                        <td id= "estado"><%= link_to "Aceptar", accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-success btn-sm" %>
+                        <%= link_to "Rechazar", rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-danger btn-sm" %></td>
                     <td></td> 
                     <td></td>
 

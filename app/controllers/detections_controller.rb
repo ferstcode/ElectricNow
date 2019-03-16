@@ -55,6 +55,7 @@ class DetectionsController < ApplicationController
         @detection.save
         redirect_to user_profile_path(current_user)
     end
+    
 
     private 
     def set_detection

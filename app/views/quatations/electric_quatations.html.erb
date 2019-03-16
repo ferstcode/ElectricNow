@@ -20,7 +20,7 @@
             <td><button type='button' class='btn btn-info'> Han aceptado la cotización </button></td>
             <td><%= link_to 'Enviar mensaje/Leer mensaje', new_quatation_message_path(e.id), remote: true, class:"btn btn-success"%></td>                     
             <td id="unread_messages"><%= e.unread_messages_for(current_user) %></td>
-            <% if e.date < Date.today %>
+            <% if e.date < Time.zone.now %>
             <td> <%= link_to "Eliminar", "#" %> </td> 
             <% else %>   
             <td><p>--</p></td>          
@@ -29,13 +29,13 @@
             <td><button type='button' class='btn btn-danger'> Han rechazado la cotización </button></td>
             <td></td>
             <td></td>            
-            <td> <%= link_to "Eliminar", "#" %> </td>                  
+            <td> <%= link_to "Eliminar", "#" %> </td>                
            
             <% else %>            
             <td><button type='button' class='btn btn-warning'>Todavía no responden </button></td>
             <td></td>
             <td></td>
-            <% if e.date < Date.today %>
+            <% if e.date < Time.zone.now %>
             <td> <%= link_to "Eliminar", "#" %> </td> 
             <% else %>   
             <td><p>--</p></td>          

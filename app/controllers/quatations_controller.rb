@@ -48,6 +48,13 @@ class QuatationsController < ApplicationController
         @quatation.update(state_mode: 1)       
         respond_to :js
     end 
+    
+    def destroy 
+        detection = Detection.find(params[:detection_id])        
+        @quatation= detection.quatations.find(params[:id])
+        @quatation.destroy
+        respond_to :js
+    end
       
 
     private 

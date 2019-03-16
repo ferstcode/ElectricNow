@@ -26,8 +26,7 @@ Rails.application.routes.draw do
       patch 'accepted_detection', to: 'detections#accepted'
       patch 'rejected_detection', to: 'detections#rejected'
     end
-    resources :quatations do
-      
+    resources :quatations do      
       member do
         patch 'accepted_quatation', to: 'quatations#accepted'
         patch 'rejected_quatation', to: 'quatations#rejected'
