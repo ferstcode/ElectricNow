@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'login_form'}) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'devise/shared/error_messages', resource: resource %>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
       <strong>Atención</strong> Sólo puedes registrarte como eléctrico si tienes certificación SEC
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -7,39 +7,38 @@
       </button>
     </div>
     <div class="field custom-field">
-    
       <%= f.label :role, class:'sr-only' %>
       <%= f.select(:role,[['Cliente', :client], ['Eléctrico', :electric]], {}, {class: 'form-control'}) %>
     </div>
 
     <div class="field custom-field">
       <%= f.label :name, class:'sr-only' %>
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Nombre',class:'form-control', required: true %>
+      <%= f.text_field :name, autofocus: true, autocomplete: 'name', placeholder: 'Nombre',class:'form-control', required: true %>
     </div>
 
-    <div class="field custom-field" >
-      <%= f.label :image, "Imagen"%>
-      <%= f.drag_and_drop_file_field :image %>
+    <div class="field custom-file custom-field  " >
+      <%= f.label :image, 'Imagen', class: 'custom-file-label'%>
+      <%= f.file_field :image, required: true, class: 'custom-file-input' %>
     </div>
 
     <div class="field custom-field">
       <%= f.label :email, class:'sr-only', placeholder: 'Correo electrónico' %>
-      <%= f.email_field :email, autocomplete: "email", placeholder: 'Correo electrónico',class:'form-control', required: true, type: 'email' %>    
+      <%= f.email_field :email, autocomplete: 'email', placeholder: 'Correo electrónico',class:'form-control', required: true, type: 'email' %>
     </div>
 
     <div class="field custom-field">
       <%= f.label :rut, class:'sr-only' %>
-      <%= f.text_field :rut, autocomplete: "rut", placeholder: 'RUT',class:'form-control', required: true %>
+      <%= f.text_field :rut, autocomplete: 'rut', placeholder: 'RUT',class:'form-control', required: true %>
     </div>
 
     <div class="field custom-field">
       <%= f.label :address, class:'sr-only' %>
-      <%= f.text_field :address, autocomplete: "address", placeholder: 'Dirección',class:'form-control', required: true %>
+      <%= f.text_field :address, autocomplete: 'address', placeholder: 'Dirección',class:'form-control', required: true %>
     </div>
 
     <div class="field custom-field">
       <%= f.label :commune, class:'sr-only' %>
-      <%= f.text_field :commune, autocomplete: "commune", placeholder: 'Comuna',class:'form-control', required: true %>
+      <%= f.text_field :commune, autocomplete: 'commune', placeholder: 'Comuna',class:'form-control', required: true %>
     </div>
     
     <div class="field custom-field">
@@ -47,19 +46,19 @@
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> ) caracteres mínimos</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Contraseña',class:'form-control', required: true %>
+      <%= f.password_field :password, autocomplete: 'password', placeholder: 'Contraseña',class:'form-control', required: true %>
     </div>
 
     <div class="field custom-field">
       <%= f.label :password_confirmation, class:'sr-only' %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirmar Contraseña',class:'form-control', required: true %>
+      <%= f.password_field :password_confirmation, autocomplete: 'password-confirmation', placeholder: 'Confirmar Contraseña',class:'form-control', required: true %>
     </div>
 
     <div class="actions custom-field custom-buttom">
-      <%= f.submit "Registrarse", class:'btn -btn-lg btn-primary btn-block'  %>
+      <%= f.submit 'Registrarse', class:'btn -btn-lg btn-primary btn-block'  %>
     </div>
 
-    <%= render "devise/shared/links" %>
+    <%= render 'devise/shared/links' %>
  
 <% end %>
 
