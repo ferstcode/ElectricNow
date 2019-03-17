@@ -42,9 +42,8 @@ ActiveAdmin.register Quatation do
     end
     controller do       
         def create 
-            puts "fer estoy en el update"
-            detection_id = params[:quatation][:detection_id]
-            puts "detect"
+          
+            detection_id = params[:quatation][:detection_id]       
 
             if detection_id.present?
                 detection = Detection.find(detection_id)

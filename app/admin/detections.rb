@@ -53,7 +53,7 @@ ActiveAdmin.register Detection do
         #end
         #para "Press cancel to return to the list without saving."
         actions
-       
+
     end
     permit_params do
         permitted = [:detail, :address, :commune, :state_mode, :longitude, :latitude, :user_id, :electric_id, :date, :hour]
