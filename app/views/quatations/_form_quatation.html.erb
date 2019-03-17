@@ -1,20 +1,19 @@
 <%= form_with(model: [detection, quatation]) do |f| %>
-<div class="form-group">
-  <%= f.label :detail, "Detalle de la cotización" %>
-  <%= f.text_field :detail, class:'form-control' %>
+<div class="field custom-field">
+  <%= f.label :detail, "Detalle de la cotización", class:'sr-only' %>
+  <%= f.text_area :detail, class:'form-control', autofocus: true, placeholder: 'Detalle de la cotización', required: true %>
 </div>
-<div class="field">
-  <%= f.label :amount, "Monto a cobrar" %>
-  <%= f.number_field :amount, class:'form-control'%>
+<div class="field custom-field">
+  <%= f.label :amount, "Monto a cobrar", class:'sr-only' %>
+  <%= f.number_field :amount, class:'form-control', placeholder: 'Monto a cobrar', required: true%>
 </div>
-<div class="field">
+<div class="field custom-field">
   <p>Día de asistencia: <%= @dia %></p>
 </div>
-<div class="field">
-  <p>Hora de presentación: <%= @hora %></p>        
+<div class="field custom-field">
+  <p>Hora de presentación: <%= @hora %> hrs.</p>        
 </div>
 
 
-<%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>
+<%= f.submit "Enviar", class:'btn btn-lg btn-primary btn-block' %>
 <% end %>
-<%=link_to 'Volver', detection_path(@detection.id), class:"btn btn-primary"%>

@@ -11,7 +11,7 @@ class QualificationsController < ApplicationController
     end
 
     def new 
-        @electric = User.find(params[:user_id])
+        @electric = User.find(params[:electric_id])
         @qualification = Qualification.new
         respond_to :js
     end

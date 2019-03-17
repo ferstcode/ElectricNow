@@ -2,20 +2,20 @@
 <% if electric_id.present? %>
 <%= f.hidden_field :electric_id, value: electric_id  %>
 <% end %>
-<div class="form-group">
-  <%= f.label :detail, "Detalle del hallazgo" %>
-  <%= f.text_field :detail, class:'form-control' %>
+<div class="field custom-field">
+  <%= f.label :detail, "Detalle del hallazgo", class:'sr-only' %>
+  <%= f.text_area :detail, class:'form-control', placeholder: 'Detalle del hallazgo', required: true %>
 </div>
-<div class="form-group">
+<div class="field custom-field">
   <%= f.label :image, "Agrega una imagen"%>
-  <%= f.drag_and_drop_file_field :image %>
+  <%= f.drag_and_drop_file_field :image%>
 </div>
-<div class="form-group">
-  <%= f.label :address, "Dirección" %>
-  <%= f.text_field :address, class:'form-control' %>
+<div class="field custom-field">
+  <%= f.label :address, "Dirección", class:'sr-only'%>
+  <%= f.text_field :address, class:'form-control', placeholder: 'Dirección', required: true %>
 </div>
-<div class="form-group">
-  <%= f.label :commune, "Comuna" %>  
+<div class="field custom-field">
+  <%= f.label :commune, "Comuna"%>  
   <%= f.select(:commune,[
   ['Cerrillos', 'Cerrillos' ],
   ['Cerro navia', 'Cerro navia'],
@@ -49,15 +49,16 @@
   ['San Ramón', 'San Ramón'],
   ['Santiago', 'Santiago'],
   ['Vitacura', 'Vitacura']  
-  ]) %>
+  ], {}, {class: 'form-control'}) %>
+  
 </div>
-<div class="form-group">.
+<div class="field custom-field">
   <%= f.label :date, "Fecha disponible" %>
-  <%= f.date_field :date, class:'form-control' %>
+  <%= f.date_field :date, class:'form-control', required: true %>
 </div>
-<div class="form-group">
+<div class="field custom-field">
   <%= f.label :hour, "Hora disponible" %>
-  <%= f.time_field :hour, class:'form-control' %>
+  <%= f.time_field :hour, class:'form-control', required: true%>
 </div>
-<%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>
+<%= f.submit "Enviar", class:'btn btn-lg btn-primary btn-block' %>
 <% end %>

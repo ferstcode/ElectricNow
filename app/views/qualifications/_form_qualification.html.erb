@@ -1,14 +1,14 @@
 <%= form_with(model: [electric_id, qualification]) do |f| %>
-  <div class="form-group">
-    <%= f.label :detail, "Comentario" %>
-    <%= f.text_field :detail, class:'form-control' %>
+  <div class="field custom-field">
+    <%= f.label :detail, "Comentario", class:'sr-only'  %>
+    <%= f.text_area :detail, class:'form-control', placeholder: 'Detalle del hallazgo', required: true %>
   </div>
-  <div class="field">
-    <%= f.label :calification, "Nota" %>
-    <%= f.number_field :calification, class:'form-control'%>
+  <div class="field custom-field">
+    <%= f.label :calification, "Nota", class:'sr-only' %>
+    <%= f.select(:calification, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], {}, {class: 'form-control'} )%>%
   </div>
  
 
   
-  <%= f.submit "Enviar", class:'btn btn-primary btn-sm' %>
+  <%= f.submit "Enviar", class:'btn btn-lg btn-primary btn-block' %>
 <% end %>
