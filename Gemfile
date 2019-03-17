@@ -34,6 +34,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'awesome_print'
+gem 'rails_12factor', group: :production
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
