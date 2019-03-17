@@ -33,6 +33,7 @@ gem 'active_storage_drag_and_drop'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'awesome_print'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
