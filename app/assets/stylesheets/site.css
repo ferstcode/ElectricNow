@@ -17,4 +17,13 @@
 .title-sign{
     margin-top: 1.5rem;
 }
-
+.registration-field{
+    margin-bottom: 1rem;
+    text-align: left;
+}
+.buttom-registration{
+    padding-top: 1rem;
+}
+.body-sign-registration{
+    padding-bottom: 2rem;
+}

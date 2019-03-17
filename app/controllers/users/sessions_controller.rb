@@ -3,6 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   layout "sign_registration"
   before_action :configure_sign_in_params, only: [:create]
+  
 
   #GET /resource/sign_in
   # def new
@@ -22,6 +23,7 @@ class Users::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     user_profile_path(resource)
   end
+ 
 
   # protected
 
