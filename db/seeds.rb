@@ -8,33 +8,33 @@
 
 
 
-@user = User.last
-Qualification.destroy_all
-Detection.destroy_all
-Detection.create(
-    user_id: @user.id,
-    detail: "Salen chispas de esta cosa que esta en el patio!!",
-    address: "fray camilo",
-    commune: "Santiago",
-    date: "20-02-2018",
-    hour: "14:00"
+# @user = User.last
+# Qualification.destroy_all
+# Detection.destroy_all
+# Detection.create(
+#     user_id: @user.id,
+#     detail: "Salen chispas de esta cosa que esta en el patio!!",
+#     address: "fray camilo",
+#     commune: "Santiago",
+#     date: "20-02-2018",
+#     hour: "14:00"
 
-)
-Detection.create(
-    user_id: @user.id,
-    detail: "0000000000000000",
-    address: "fray camilo",
-    commune: "Santiago",
-    date: "10-02-2018",
-    hour: "16:00"  
-)
-Qualification.create(
-        detail:"paralelepido",
-        client_id: @user.id,
-        electric_id: User.first.id,
-        calification: 5
+# )
+# Detection.create(
+#     user_id: @user.id,
+#     detail: "0000000000000000",
+#     address: "fray camilo",
+#     commune: "Santiago",
+#     date: "10-02-2018",
+#     hour: "16:00"  
+# )
+# Qualification.create(
+#         detail:"paralelepido",
+#         client_id: @user.id,
+#         electric_id: User.first.id,
+#         calification: 5
        
-)
+# )
 
 
 
@@ -43,3 +43,4 @@ Qualification.create(
 
   
 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

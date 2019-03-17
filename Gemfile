@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'activeadmin'
 gem 'devise'
 gem 'cancancan'
 gem 'active_storage_drag_and_drop'
