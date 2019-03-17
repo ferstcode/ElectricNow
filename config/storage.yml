@@ -15,10 +15,10 @@ local:
 #   bucket: your_own_bucket
 amazon:
   service: S3
-  access_key_id: ENV["access_key_id"]
-  secret_access_key: ENV["secret_access_key"]
-  region: ENV["region"]
-  bucket: ENV["bucket"]
+  access_key_id: <%= ENV["access_key_id"]%>
+  secret_access_key: <%= ENV["secret_access_key"]%>
+  region: <%= ENV["region"] %>
+  bucket: <%= ENV["bucket"]%>
 
  
 
