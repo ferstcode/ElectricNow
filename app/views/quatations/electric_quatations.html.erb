@@ -17,8 +17,7 @@
     </thead>
     <tbody>
     <% @quatations_electric.each do |e| %>
-        <tr>
-          <td> <%=e.created_at.strftime('%d-%m-%Y') %> </td>
+        <tr>          
           <td> <%=e.detection.user.name %></td>
           <% if e.accepted? %>
               <td><button type='button' class='btn btn-info'> Han aceptado la cotización </button></td>
