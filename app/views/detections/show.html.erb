@@ -29,7 +29,7 @@
     </div>
     <div class="text-center">
         <%=link_to 'Volver', user_profile_path(current_user), class:'btn btn-outline-secondary btn-lg'%>
-        <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), remote: true, class: 'btn btn-primary btn-lg', hidden: current_user.client? || @detection.date < Time.zone.now %>
+        <%=link_to 'Realizar cotización', new_detection_quatation_path(@detection.id), remote: true, class: 'btn btn-primary btn-lg', hidden: current_user.client?%>
     </div>
 </div>
 
