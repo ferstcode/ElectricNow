@@ -1,30 +1,33 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Fecha de recepción</th>
-            <th>Nombre del cliente</th>
-            <th>Aceptar/Rechazar</th>
-            
-            
-        </tr>
-    </thead>
-    <tbody>
-        <% @detections_electric.each do |d| %>
-        <tr>
-            <td><%=d.created_at.strftime('%d-%m-%Y') %></td>
-            <td><%=d.client.name%></td>                     
-            <% if d.accepted?%>
-            <td><button type='button' class='btn btn-info'> Haz aceptado el hallazgo </button></td>
-            <% elsif d.rejected?%> 
-            <td><button type='button' class='btn btn-danger'> Haz rechazado el hallazgo </button></td>
-            <% else %>
-            <td id= "estado"><%= link_to "Aceptar", accepted_detection_detection_path(d.id), method: :patch, remote: true, class:"btn btn-success btn-sm" %>
-                <%= link_to "Rechazar", rejected_detection_detection_path(d.id), method: :patch, remote: true, class:"btn btn-danger btn-sm" %></td>
-                <% end %>
-                <td><%=link_to 'Ver detalle', detection_path(d.id), class:"btn btn-primary" %></td>             
+<div class="container">
+    <div class="text-center">
+      <h2>Cotizaciones Recibidas</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha de recepción</th>
+                <th>Nombre del cliente</th>
+                <th>Aceptar/Rechazar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @detections_electric.each do |d| %>
+            <tr>
+                <td><%=d.created_at.strftime('%d-%m-%Y') %></td>
+                <td><%=d.client.name%></td>
+                <% if d.accepted?%>
+                <td><button type='button' class='btn btn-info'> Haz aceptado el hallazgo </button></td>
+                <% elsif d.rejected?%>
+                <td><button type='button' class='btn btn-danger'> Haz rechazado el hallazgo </button></td>
+                <% else %>
+                <td id= "estado"><%= link_to "Aceptar", accepted_detection_detection_path(d.id), method: :patch, remote: true, class:"btn btn-success btn-sm" %>
+                    <%= link_to "Rechazar", rejected_detection_detection_path(d.id), method: :patch, remote: true, class:"btn btn-danger btn-sm" %></td>
+                    <% end %>
+                <td><%=link_to 'Ver detalle', detection_path(d.id), class:"btn btn-primary" %></td>
             </tr>
             <% end %>
         </tbody>
     </table>
+</div>
     
     
