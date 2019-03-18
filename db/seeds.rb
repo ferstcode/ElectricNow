@@ -35,19 +35,29 @@
 #         calification: 5
        
 # )
+unless AdminUser.where(email: 'admin@example.com')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+end
 
+ActiveRecord::Base.connection.execute("Delete from ruts")
 
+file = File.read "db/json_seed/electrics.json"
+data = JSON.parse(file)
+
+   data["Instaladores"].each do |h|
+      Rut.create(
+         rut: h["RUT"]
+      )  
+   end
+# User.electric.create(
+#    name: Faker::Name.name
+#    rut: Rut.rut.sample
+# )
 
 
 
 
   
 
-#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
-file = File.read "db/json_seed/electrics.json"
-data = JSON.parse(file)
-   data["Instaladores"].each do |h|
-       h["RUT"]   
-   end
 

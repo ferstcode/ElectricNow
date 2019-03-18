@@ -119,6 +119,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     ffi (1.10.0)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -297,6 +299,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  faker
   geocoder
   gmaps4rails
   jbuilder (~> 2.5)

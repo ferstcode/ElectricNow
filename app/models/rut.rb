@@ -1,0 +1,2 @@
+class Rut < ApplicationRecord
+end
