@@ -45,6 +45,11 @@ class UsersController < ApplicationController
             @detections_all= @detections_client.where(electric_id: nil)        
         end
     end
+
+    def client_profile
+
+    end
+    
     
 
 end

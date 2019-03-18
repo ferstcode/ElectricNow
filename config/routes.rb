@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
+  get 'users/:id/client_profile', to: 'users#client_profile', as: 'client_profile'
+  #resources :users, only: :client_profile, as: 'client_profile' 
   resources :users, only: :show, as: 'user_profile' 
   resources :users, only: :index, as: 'electrics' 
 

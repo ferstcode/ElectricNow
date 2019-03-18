@@ -30,7 +30,12 @@
                   <span> <%= image_tag current_user.image, size: '38', class:'rounded-circle mr-2', alt: 'Foto Usuario' %> <%= current_user.name %> </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <%= link_to 'Perfil', electric_qualifications_path(electric_id: current_user.id), method: :get, class: 'dropdown-item' %>
+                <% if current_user.electric? %>
+                <%= link_to 'Perfil', electric_qualifications_path(electric_id: current_user.id), method: :get, class: 'dropdown-item' %>
+                <%else%>
+                <%= link_to 'Perfil', client_profile_path(id: current_user.id), method: :get, class: 'dropdown-item' %>
+                <%end%>
+                  
                   <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
                 </div>
               </li>

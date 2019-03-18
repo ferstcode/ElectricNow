@@ -2,13 +2,7 @@
   <div class="text-center mb-4">
     <h3>Detalle Hallazgo</h3>
   </div>
-    <% if current_user.electric? %>
-        <div class="text-center mb-3">
-            <%=link_to(electric_qualifications_path(@detection.user.id)) do %>
-                <span> <%= image_tag @detection.user.image, size: '38', class:'rounded-circle mr-2', alt: 'Foto Usuario' %> <%= @detection.user.name %> </span>
-            <% end %>
-        </div>
-    <% end %>
+
     <div class="row">
         <div class="col-sm">
         </div>
