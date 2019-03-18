@@ -43,4 +43,11 @@
 
   
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+file = File.read "db/json_seed/electrics.json"
+data = JSON.parse(file)
+   data["Instaladores"].each do |h|
+       h["RUT"]   
+   end
+
