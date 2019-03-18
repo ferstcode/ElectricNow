@@ -23,8 +23,8 @@
                     <td> <%= q.detail %> </td>
                     <td>
                         <% if current_user.client? %>
-                            <span class="status-accepted mr-2" <% if !q.accepted? %> hidden <% end %>>Aceptada</span>
-                            <span class="status-rejected mr-2" <% if !q.rejected? %> hidden <% end %>>Rechazada</span>
+                            <span class="status-accepted mr-2" <% if !q.accepted? %> hidden <% end %> >Aceptada</span>
+                            <span class="status-rejected mr-2" <% if !q.rejected? %> hidden <% end %> >Rechazada</span>
                             <%= link_to new_quatation_message_path(q.id), remote: true, class:'messages-btn btn btn-info btn-sm', hidden: !q.accepted? do%>
                                 Mensajes <span class="badge badge-light"><%= q.unread_messages_for(current_user) %></span>
                             <% end %>
