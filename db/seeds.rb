@@ -35,7 +35,7 @@
 #         calification: 5
        
 # )
-unless AdminUser.where(email: 'admin@example.com')
+unless AdminUser.where(email: 'admin@example.com').present?
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 end
 
@@ -49,10 +49,14 @@ data = JSON.parse(file)
          rut: h["RUT"]
       )  
    end
-# User.electric.create(
-#    name: Faker::Name.name
-#    rut: Rut.rut.sample
-# )
+
+
+   
+
+
+
+
+
 
 
 
