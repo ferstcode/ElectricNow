@@ -31,7 +31,7 @@
                             <div class="col-md-4 mb-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title"><%= d.created_at.strftime('%d-%m-%Y') %></h4>
+                                        <h4 class="card-title"><%= d.date.strftime('%d-%m-%Y') %></h4>
                                             <%= link_to "#{d.quatations.count} Cotizaciones", detection_quatations_path(d.id), class: "btn #{d.quatations.count == 0 ? 'btn-light disabled' : 'btn-success'}"%>
                                         <p class="card-text p-y-1"><%= d.detail%></p>
                                         <%=link_to 'Ver más', detection_path(d.id), class: 'card-link' %>
