@@ -30,7 +30,7 @@
                             <% end %>
                             <%= link_to 'Aceptar', accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'accept-btn btn btn-success btn-sm', hidden: q.date < Time.zone.now || q.accepted? || q.rejected? %>
                             <%= link_to 'Rechazar', rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'reject-btn btn btn-warning btn-sm', hidden: q.date < Time.zone.now || q.accepted? || q.rejected? %>
-                            <%= link_to 'Calificar', new_electric_qualification_path(electric_id: q.electric.id), remote: true, class: 'calificate-btn btn btn-success btn-sm', hidden: q.date > Time.zone.now || q.waiting? || q.rejected?  %>
+                            <%= link_to 'Calificar', new_electric_qualification_path(electric_id: q.electric.id), remote: true, class: 'calificate-btn btn btn-success btn-sm', hidden:  q.waiting? || q.rejected?  %>
                             <%= link_to 'Eliminar', detection_quatation_path(q.detection, q), method: :delete, remote: true, class: 'delete-btn btn btn-danger btn-sm', hidden: q.date > Time.zone.now && q.waiting? %>
                         <% end %>
                     </td>
