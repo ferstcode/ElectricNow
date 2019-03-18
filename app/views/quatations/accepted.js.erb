@@ -1,1 +1,4 @@
-$("#estado").html("<button type='button' class='btn btn-info'> Haz aceptado la cotización </button>")
+$('#row-<%=@quatation.id%>').find('.status-accepted').removeAttr('hidden');
+$('#row-<%=@quatation.id%>').find('.messages-btn').removeAttr('hidden');
+$('#row-<%=@quatation.id%>').find('.accept-btn').hide();
+$('#row-<%=@quatation.id%>').find('.reject-btn').hide();

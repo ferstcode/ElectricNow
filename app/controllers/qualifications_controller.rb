@@ -2,8 +2,13 @@ class QualificationsController < ApplicationController
 
     def index 
         @electric = User.find(params[:electric_id])
-        @qualifications = @electric.electric_qualifications.all 
-        
+        @qualifications = @electric.electric_qualifications.all
+        @sum = 0
+        @qualifications.each do |q|
+            @sum += q.calification
+        end
+        count = @qualifications.count
+        @prom = @sum / ((count > 0) ? count : 1)
     end 
     def show
        
@@ -34,6 +39,6 @@ class QualificationsController < ApplicationController
     def qualification_params
         params.require(:qualification).permit(:detail, :calification)
     end
-    
+
 
 end
