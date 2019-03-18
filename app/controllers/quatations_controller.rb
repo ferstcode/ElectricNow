@@ -49,7 +49,7 @@ class QuatationsController < ApplicationController
         respond_to :js
     end 
     
-    def destroy 
+    def destroy
         detection = Detection.find(params[:detection_id])        
         @quatation= detection.quatations.find(params[:id])
         @quatation.destroy

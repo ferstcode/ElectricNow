@@ -1,24 +1,48 @@
 <% if current_user.client? %>
-<h4><%= @electric.name %></h4>
-<table class= "table">
-    <thead>
-        <tr>
-            <th>Calificaciones</th>            
-            <th>Comentarios</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @qualifications.each do |q| %>
-        <tr>
-            <td><%=q.calification%></td>            
-            <td><%=q.detail%></td>
-        </tr>
-        <% end  %>
-    </tbody>
-</table>
-<%=link_to 'Enviar levantamiento', nested_detection_electric_path(@electric), remote: true, class:'btn btn-primary btn-sm'%>
-<%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary btn-sm"%>  
+<div class="jumbotron">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+          <%= image_tag @electric.image, size: '150', class:'rounded-circle', alt: 'Foto Usuario' %>
+        </div>
+        <div class="col-sm">
+          <h2><%= @electric.name %></h2>
 
+          <% if  @prom > 0 %>
+              <p><%= @prom %></p>
+          <% else %>
+              <p> Sin Calificaciones </p>
+          <% end %>
+          <p><%=link_to 'Enviar levantamiento', nested_detection_electric_path(@electric), remote: true, class:'btn btn-primary btn-lg'%>
+        </div>
+        <div class="col-sm"></div>
+      </div>
+    </div>
+</div>
+<div class="container">
+  <% if !@qualifications.empty? %>
+      <table class= "table">
+          <thead>
+          <tr>
+              <th>Calificaciones</th>
+              <th>Comentarios</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @qualifications.each do |q| %>
+              <tr>
+                  <td><%=q.calification%></td>
+                  <td><%=q.detail%></td>
+              </tr>
+          <% end  %>
+          </tbody>
+    </table>
+  <% end %>
+  <div class="text-center">
+    <%=link_to 'Volver', :back, class: 'btn btn-outline-secondary btn-lg'%>
+  </div>
+</div>
 <% end %>
 
 <% if current_user.electric? %>
@@ -42,5 +66,7 @@
         <% end %>
     </tbody>
 </table>
-<%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary btn-sm"%>
+<div class="text-center">
+  <%=link_to 'Volver', user_profile_path(current_user), class: 'btn btn-outline-secondary btn-lg'%>
+</div>
 <% end %>
