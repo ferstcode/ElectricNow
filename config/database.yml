@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: ElectricNow_production
+  database: db/production.sqlite3
   username: ElectricNow
   password: <%= ENV['ELECTRICNOW_DATABASE_PASSWORD'] %>

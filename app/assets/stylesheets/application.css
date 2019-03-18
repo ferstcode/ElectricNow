@@ -15,5 +15,7 @@
  *= require_self
  *= require direct_uploads
  *= require active_storage_drag_and_drop
+ *= require site.css
+
  */
- @import "site.css"
+
