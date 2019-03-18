@@ -1,72 +1,54 @@
-<% if current_user.client? %>
+
 <div class="jumbotron">
     <div class="container text-center">
-      <div class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm">
-          <%= image_tag @electric.image, size: '150', class:'rounded-circle', alt: 'Foto Usuario' %>
-        </div>
-        <div class="col-sm">
-          <h2><%= @electric.name %></h2>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+              <%= image_tag @electric.image, size: '150', class:'rounded-circle', alt: 'Foto Usuario' %>
+            </div>
+            <div class="col-sm">
+                <h2><%= @electric.name %></h2>
 
-          <% if  @prom > 0 %>
-              <p><%= @prom %></p>
-          <% else %>
-              <p> Sin Calificaciones </p>
-          <% end %>
-          <p><%=link_to 'Enviar levantamiento', nested_detection_electric_path(@electric), remote: true, class:'btn btn-primary btn-lg'%>
+                <% if  @prom > 0 %>
+                    <p><%= @prom %></p>
+                <% else %>
+                    <p> Sin Calificaciones </p>
+                <% end %>
+                <% if current_user.client? && current_user.id != @electric.id %>
+                    <p><%=link_to 'Enviar levantamiento', nested_detection_electric_path(@electric), remote: true, class:'btn btn-primary btn-lg'%>
+                <% end %>
+            </div>
+            <div class="col-sm"></div>
         </div>
-        <div class="col-sm"></div>
-      </div>
     </div>
 </div>
 <div class="container">
-  <% if !@qualifications.empty? %>
-      <table class= "table">
-          <thead>
-          <tr>
-              <th>Calificaciones</th>
-              <th>Comentarios</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @qualifications.each do |q| %>
-              <tr>
-                  <td><%=q.calification%></td>
-                  <td><%=q.detail%></td>
-              </tr>
-          <% end  %>
-          </tbody>
-    </table>
-  <% end %>
   <div class="text-center">
-    <%=link_to 'Volver', :back, class: 'btn btn-outline-secondary btn-lg'%>
+      <h3>Calificaciones</h3>
   </div>
-</div>
-<% end %>
-
-<% if current_user.electric? %>
-<table class="table">
-    <thead>
+  <% if !@qualifications.empty? %>
+      <table class="table">
+        <thead>
         <tr>
-            <th>Calificación</th>
-            <th>Nombre del cliente que calificó</th>
-            <th>Detalle de la calificación</th>
-            <th>Fecha en la que calificó</th>
+          <th>Cliente</th>
+          <th>Calificación</th>
+          <th>Comentario</th>
+          <th>Fecha</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <%  @qualifications.each do |q|%>
-        <tr>
-            <td> <%= q.calification %></td>
-            <td><%= q.client.name%></td>
-            <td><%= q.detail%></td>
-            <td><%= q.created_at.strftime('%d-%m-%Y') %></td>
-        </tr>
+            <tr>
+              <td><%= q.client.name%></td>
+              <td> <%= q.calification %></td>
+              <td><%= q.detail%></td>
+              <td><%= q.created_at.strftime('%d-%m-%Y') %></td>
+            </tr>
         <% end %>
-    </tbody>
-</table>
-<div class="text-center">
-  <%=link_to 'Volver', user_profile_path(current_user), class: 'btn btn-outline-secondary btn-lg'%>
+        </tbody>
+      </table>
+  <% end %>
 </div>
-<% end %>
+<div class="text-center">
+  <%=link_to 'Volver', :back, class: 'btn btn-outline-secondary btn-lg'%>
+</div>

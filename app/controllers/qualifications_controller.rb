@@ -23,13 +23,14 @@ class QualificationsController < ApplicationController
 
     def create 
         @qualification = Qualification.new(
-            detail: params[:qualification][:detail],
+            detail: params[:detail],
             client_id: current_user.id,
-            electric_id: User.find(params[:electric_id]),
-            calification: params[:qualification][:calification]
+            electric_id:params[:electric_id],
+            calification: params[:calification]
            
         )
-        @qualification.save 
+        @qualification.save
+        puts @qualification.errors.messages
         respond_to :js
     end 
 
@@ -37,7 +38,7 @@ class QualificationsController < ApplicationController
     
 
     def qualification_params
-        params.require(:qualification).permit(:detail, :calification)
+        params.permit(:detail, :calification)
     end
 
 
