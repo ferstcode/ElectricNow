@@ -23,15 +23,15 @@
                     <td> <%= q.detail %> </td>
                     <td>
                         <% if current_user.client? %>
-                            <span class="status-accepted mr-2" <% if !q.accepted? %> hidden <% end %>Aceptada</span>
-                            <span class="status-rejected mr-2" <% if !q.rejected? %> hidden <% end %>Rechazada</span>
+                            <span class="status-accepted mr-2" <% if !q.accepted? %> hidden <% end %>>Aceptada</span>
+                            <span class="status-rejected mr-2" <% if !q.rejected? %> hidden <% end %>>Rechazada</span>
                             <%= link_to new_quatation_message_path(q.id), remote: true, class:'messages-btn btn btn-info btn-sm', hidden: !q.accepted? do%>
                                 Mensajes <span class="badge badge-light"><%= q.unread_messages_for(current_user) %></span>
                             <% end %>
-                            <%= link_to 'Aceptar', accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'accept-btn btn btn-success btn-sm', hidden: q.date < Time.zone.now || q.accepted? || q.rejected? %>
-                            <%= link_to 'Rechazar', rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'reject-btn btn btn-warning btn-sm', hidden: q.date < Time.zone.now || q.accepted? || q.rejected? %>
+                            <%= link_to 'Aceptar', accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'accept-btn btn btn-success btn-sm', hidden: q.accepted? || q.rejected? %>
+                            <%= link_to 'Rechazar', rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'reject-btn btn btn-warning btn-sm', hidden: q.accepted? || q.rejected? %>
                             <%= link_to 'Calificar', new_electric_qualification_path(electric_id: q.electric.id), remote: true, class: 'calificate-btn btn btn-success btn-sm', hidden: q.waiting? || q.rejected?  %>
-                            <%= link_to 'Eliminar', detection_quatation_path(q.detection, q), method: :delete, remote: true, class: 'delete-btn btn btn-danger btn-sm', hidden: q.date > Time.zone.now && q.waiting? %>
+                            <%= link_to 'Eliminar', detection_quatation_path(q.detection, q), method: :delete, remote: true, class: 'delete-btn btn btn-danger btn-sm', hidden: q.waiting? %>
                         <% end %>
                     </td>
                 </tr>
