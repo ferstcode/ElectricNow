@@ -1,86 +1,78 @@
-<% if can? :read, Detection %> <!-- electric-->
-    <h2 class=" text-center">Hallazgos</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Cliente</th>
-                <th>Hallazgo</th>
-            </tr>
-        </thead>
-        <tbody>            
-            <% @detections.each do |d| %>
-                <% if !d.electric_id.present? %>
-                <tr>
-                    <td><%= d.user.name %></td>
-                    <td><%= d.detail%></td> 
-                    <td><%= link_to 'Detalle', detection_path(d.id), class:"btn btn-primary"%></td>                            
-                </tr>
-                <% end %>
-            <% end %>
-        </tbody>
-    </table>
-<% end %>
-<% if can? :create, Detection %>   <!-- client--> 
-    <h2>Hallazgos enviados a un eléctrico</h2>
-    <% if @detections_electric_id.present? %>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Fecha de envío</th>
-                    <th>Detalle</th>                        
-                    <th>Cotizaciones recibidas</th>
-                    <th></th>
-                </tr>
-            </thead>
-            </tbody>
-            <% @detections_electric_id.each do |d|  %>
-                <tr>
-                    <td> <%=  d.created_at.strftime('%d-%m-%Y')%></td>
-                    <td> <%=  d.detail%></td>                        
-                    <% if d.quatations.count == 0 %>
-                        <td> <button type="button" class="btn btn-danger">No haz recibido cotizaciones</button></td>                          
-                    <% elsif d.quatations.count > 0 %>
-                        <td><%= link_to d.quatations.count, detection_quatations_path(d.id), class: "btn btn-info"%></td>
-                    <% end %>
-                    <td> <%=link_to 'Ver mas', detection_path(d.id), class:"btn btn-primary"%> </td>
-                </tr>
-            <% end %>
-    <% else %>
-        <h5>No existen hallazgos relacionados a un eléctrico</h5>
-    <% end %>        
-    <h2>Hallazgos publicados</h2>
-    <% if @detections_all.present? %>
+<div class="text-center">
+    <% if can? :read, Detection %><!-- electric-->
+        <h2>Hallazgos</h2>
         <div class="py-5">
-            <div class="container">            
+            <div class="container">
                 <div class="row hidden-md-up">
-                <% @detections_all.each do |d| %>
-                    <div class="col-md-4">                        
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title"><%=d.created_at.strftime('%d-%m-%Y')%></h4>                                                                     
-                                                                                               
-                                <% if d.quatations.count > 0 %>
-                                    <%= link_to "#{d.quatations.count} Cotizaciones", detection_quatations_path(d.id), class: "card-subtitle"%>
-                                <% else %>
-                                    <h6 class="card-subtitle text-muted"><%= d.quatations.count%> Cotizaciones </h6> 
-                                <% end %>
-                                <p class="card-text p-y-1"><%= d.detail%></p>                                      
-                                <%=link_to 'Ver mas', detection_path(d.id), class:"card-link"%></a>
+                    <% @detections.each do |d| %>
+                        <% if !d.electric_id.present? %>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><%= d.user.name %></h4>
+                                        <p class="card-text p-y-1"><%= d.detail%></p>
+                                        <%=link_to 'Ver más', detection_path(d.id), class: 'card-link' %>
+                                    </div>
+                                </div>
                             </div>
-                        </div>                        
-                    </div>
-                <% end %>                
+                        <% end %>
+                    <% end %>
                 </div>
             </div>
         </div>
+    <% end %>
+    <% if can? :create, Detection %>   <!-- client-->
+        <h2>Hallazgos Enviados a un Eléctrico</h2>
+        <% if @detections_electric_id.present? %>
+            <div class="py-5">
+                <div class="container">
+                    <div class="row hidden-md-up">
+                        <% @detections_electric_id.each do |d| %>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><%= d.created_at.strftime('%d-%m-%Y') %></h4>
+                                            <%= link_to "#{d.quatations.count} Cotizaciones", detection_quatations_path(d.id), class: "btn #{d.quatations.count == 0 ? 'btn-light disabled' : 'btn-success'}"%>
+                                        <p class="card-text p-y-1"><%= d.detail%></p>
+                                        <%=link_to 'Ver más', detection_path(d.id), class: 'card-link' %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        <% else %>
+            <p>No existen hallazgos relacionados a un eléctrico</p>
+        <% end %>
+        <h2>Hallazgos Publicados</h2>
+        <% if @detections_all.present? %>
+            <div class="py-5">
+                <div class="container">
+                    <div class="row hidden-md-up">
+                    <% @detections_all.each do |d| %>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title"><%= d.created_at.strftime('%d-%m-%Y') %></h4>
+                                        <%= link_to "#{d.quatations.count} Cotizaciones", detection_quatations_path(d.id), class: "btn #{d.quatations.count == 0 ? 'btn-light disabled' : 'btn-success'}"%>
+                                    <p class="card-text p-y-1"><%= d.detail%></p>
+                                    <%=link_to 'Ver más', detection_path(d.id), class: 'card-link' %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                    </div>
+                </div>
+            </div>
+        <% else %>
+            <p>No existen hallazgos publicados</p>
+        <%end %>
     <%end %>
-<%end %>
-
-
-
-
-
-
-            
-          
+    <div>
+      <% if can? :create, Detection %>
+          <%=link_to 'Publicar hallazgo', new_detection_path, remote: true, class: 'btn btn-primary btn-lg' %>
+      <% end %>
+    </div>
+</div>
         

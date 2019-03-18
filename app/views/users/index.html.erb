@@ -1,26 +1,27 @@
-<table class= 'table'>
-    <thead>
-        <tr>
-            <th>Eléctricos</th>
-            <th>Promedio de calificaciones</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @electrics.each do |e| %>
-        <tr>
-            <td><%= e.name %></td> 
-            <% if  @result[e.id] != 0%>               
-            <td> <%= @result[e.id] %> </td> 
-            
-            <% else %>
-            <td> Todavía no ha sido calificado </td>
-            <% end %> 
-            <td> <%= link_to 'Detalle', electric_qualifications_path(e.id) %> </td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
-
+<div class="text-center">
+  <h2>Eléctricos</h2>
+  <div class="py-5">
+      <div class="container">
+          <div class="row hidden-md-up">
+              <% @electrics.each do |e| %>
+                  <div class="col-md-4 mb-4">
+                      <div class="card">
+                          <%= image_tag e.image.variant(combine_options: {resize: '286>', gravity: 'Center', crop: '286x180+0+0' }), class:'card-img-top', alt:'Foto Usuario'%>
+                          <div class="card-body">
+                              <h4 class="card-title"><%= e.name %></h4>
+                            <% if  @result[e.id] != 0%>
+                                <p><%= @result[e.id] %></p>
+                            <% else %>
+                                <p> Sin Calificaciones </p>
+                            <% end %>
+                            <%= link_to 'Ver más', electric_qualifications_path(e.id), class: 'card-link' %>
+                        </div>
+                    </div>
+                  </div>
+              <% end %>
+          </div>
+      </div>
+  </div>
+</div>
 
 

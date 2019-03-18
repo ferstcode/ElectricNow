@@ -1,56 +1,53 @@
-<div class="container-fluid">
+<div class="container">
+    <h2 class="text-center">Cotizaciones</h2>
     <table class="table">
         <thead>
             <tr>
-                <th>Cotizaciones</th>
-                <th>Comentario</th>
+                <th>Técnico</th>
+                <th>Fecha</th>
                 <th>Cobro</th>
-                <th>Aceptar/Rechazar</th>
-                <th>Podrás enviar/leer mensajes si aceptas la cotización</th>            
-                <th>Mensajes pendientes</th>
-                <th>Eliminar</th>
+                <th>Comentario</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <% @quatations.each do |q| %>
                 <tr id="<%=q.id%>">
-                    <td> <%=link_to q.electric.name, electric_qualifications_path(q.electric.id) %> </td>
+                    <td>
+                      <%=link_to(electric_qualifications_path(q.electric.id)) do %>
+                        <span> <%= image_tag q.electric.image, size: '38', class:'rounded-circle mr-2', alt: 'Foto Usuario' %> <%= q.electric.name %> </span>
+                      <% end %>
+                    </td>
+                    <td> <%= q.created_at.strftime('%d-%m-%Y %H:%M:%S') %></td>
+                    <td> <%= number_to_currency q.amount, unit: '$ ', separator: '.', precision: 0 %></td>
                     <td> <%= q.detail %> </td>
-                    <td> <%= q.amount %> </td>
-                    
-                    <% if current_user.client? %>
-                        <% if q.accepted?%>
-                            <td><button type='button' class='btn btn-info'> Haz aceptado la cotización </button></td>
-                            <td><%= link_to 'Enviar mensaje/Leer mensaje', new_quatation_message_path(q.id), remote: true, class:"btn btn-success"%></td>
-                            <td id="unread_messages"><%= q.unread_messages_for(current_user) %></td>
+                    <td>
+                        <% if current_user.client? %>
+                            <% if q.accepted?%>
+                                <button type='button' class='btn btn-info'> Estado Aceptado </button>
+                                <%= link_to 'Mensajes', new_quatation_message_path(q.id), remote: true, class:"btn btn-success"%>
+                                <%= q.unread_messages_for(current_user) %>
                                 <% if q.date < Time.zone.now %>
-                                    <td> <%= link_to "Eliminar", detection_quatation_path(q.detection, q), method: :delete, remote: true  %> </td> 
-                                <% else %>   
-                                    <td><p>--</p></td>          
+                                  <%= link_to 'Eliminar', detection_quatation_path(q.detection, q), method: :delete, remote: true  %>
                                 <% end %>
-                        <% elsif q.rejected?%> 
-                            <td><button type='button' class='btn btn-danger'> Haz rechazado la cotización </button></td>
-                            <td></td>
-                            <td></td>
-                            <td> <%= link_to "Eliminar", detection_quatation_path(q.detection, q), method: :delete, remote: true%> </td>                    
-                        <% else %>
-                            <% if q.date < Time.zone.now %>
-                                <td>--</td>
-                                <td>--</td>
-                                <td></td>                         
-                                <td> <%= link_to "Eliminar", detection_quatation_path(q.detection, q), method: :delete, remote: true %> </td> 
+                            <% elsif q.rejected?%>
+                                <button type='button' class='btn btn-danger'> Estado Rechazado </button>
+                                <%= link_to 'Eliminar', detection_quatation_path(q.detection, q), method: :delete, remote: true%>
                             <% else %>
-                                <td id= "estado"><%= link_to "Aceptar", accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-success btn-sm" %>
-                                <%= link_to "Rechazar", rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class:"btn btn-danger btn-sm" %></td>
-                                <td></td> 
-                                <td></td>
-                                <td><p>--</p></td>          
-                            <% end %>                    
+                                <% if q.date < Time.zone.now %>
+                                    <%= link_to 'Eliminar', detection_quatation_path(q.detection, q), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %>
+                                <% else %>
+                                    <%= link_to 'Aceptar', accepted_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'btn btn-success btn-sm' %>
+                                    <%= link_to 'Rechazar', rejected_quatation_detection_quatation_path(@detection, q.id), method: :patch, remote: true, class: 'btn btn-warning btn-sm' %>
+                                <% end %>
+                            <% end %>
                         <% end %>
-                    <% end %>            
+                    </td>
                 </tr>
             <% end %>
         </tbody>
     </table>
-    <%=link_to 'Volver', user_profile_path(current_user), class:"btn btn-primary btn-sm"%> 
+    <div class="text-center">
+      <%=link_to 'Volver', user_profile_path(current_user), class: 'btn btn-outline-secondary btn-lg'%>
+    </div>
 </div>

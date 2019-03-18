@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login_form'}) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field custom-field">
     <%= f.label :email, class:'sr-only' %>
     <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Correo electrónico', class:'form-control', required: true, type: 'email'%>

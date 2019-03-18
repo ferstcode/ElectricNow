@@ -6,9 +6,9 @@
   <%= f.label :detail, "Detalle del hallazgo", class:'sr-only' %>
   <%= f.text_area :detail, class:'form-control', placeholder: 'Detalle del hallazgo', required: true %>
 </div>
-<div class="field custom-field">
-  <%= f.label :image, "Agrega una imagen"%>
-  <%= f.drag_and_drop_file_field :image%>
+<div class="field custom-file custom-field" >
+  <%= f.label :image, 'Imagen', class: 'custom-file-label'%>
+  <%= f.file_field :image, required: true, class: 'custom-file-input' %>
 </div>
 <div class="field custom-field">
   <%= f.label :address, "Dirección", class:'sr-only'%>

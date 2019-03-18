@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   get :quatations, to: 'quatations#electric_quatations', as: 'user_quatations'
   
-  
   resources :electrics do
     member do
       get 'new_detection', to: 'detections#new', as: 'nested_detection'
