@@ -36,6 +36,7 @@ gem 'underscore-rails'
 gem 'awesome_print'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk-s3', require: false
+gem 'faker'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
